@@ -1,0 +1,45 @@
+@import url(https://allfont.es/allfont.css?fonts=sansation-regular);
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Sansation Regular', arial;
+    background-color: rgb(38, 38, 51);
+}
+.logo{
+    width: 225px;
+    height: 225px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+}
+.loginContainer{
+    order:5;
+    text-align: center;
+}
+.password{
+    padding: 1em;
+    margin-top: 1em;
+}
+.name{
+    padding: 1em;
+}
+.btn{
+    padding: 0.5em;  
+}
+p{
+    padding: 1.5em;
+    color:white;
+}
+a{
+    color:yellowgreen;
+}
+.container{
+    order:5;
+    text-align: center;
+}
+.google{
+   display: inline;
+}
