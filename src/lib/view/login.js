@@ -16,10 +16,8 @@ export const login = () => {
   <div class="btn">
   <button type="submit" class="btn-ing">Ingresar</button>
   </div>
-  
-  
-  <input type= "image" src="/img/google1.png"  class="btn" alt="">
-  
+  <p>Regístrate con :</p>
+   <input type= "image" src="/img/google1.png"  class="btn" alt="">
   </div>
   <p>Si no tienes una cuenta <a href="#">Regístrate</a></p>
   </div>

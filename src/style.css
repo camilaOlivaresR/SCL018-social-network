@@ -22,9 +22,13 @@ body{
 .password{
     padding: 1em;
     margin-top: 1em;
+    width: 17em;
+    height: 3em;
 }
 .name{
     padding: 1em;
+    width: 17em;
+    height: 3em;
 }
 .btn{
     padding: 0.5em;  
@@ -32,9 +36,9 @@ body{
 .btn-ing{
     height: 30px;
     margin-top: 1em;
-    margin-bottom: 1em;
-    width: 100px;
+    width: 17em;
     background-color:yellowgreen;
+    
 }
    
 p{
@@ -51,7 +55,7 @@ a{
 .google{
    display: flex;
    height: 30px;
-   width: 300;
+   width: 17em;
    justify-content: center;
    margin-right: 20px;
 }
