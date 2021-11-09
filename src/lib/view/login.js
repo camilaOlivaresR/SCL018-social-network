@@ -14,12 +14,12 @@ export const login = () => {
   </section>
   </form>
   <div class="btn">
-  <button type="submit" class="btn">Ingresar</button>
+  <button type="submit" class="btn-ing">Ingresar</button>
   </div>
-  <div class="google">
-  <img src="/img/google1.png" class="google">
-  </div>
-  <button type="submit" class="btn">Ingresar con Google</button>
+  
+  
+  <input type= "image" src="/img/google1.png"  class="btn" alt="">
+  
   </div>
   <p>Si no tienes una cuenta <a href="#">Regístrate</a></p>
   </div>
