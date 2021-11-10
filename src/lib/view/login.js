@@ -1,3 +1,5 @@
+import { signIn } from './loginFirebase.js';
+
 export const login = () => {
   const viewLogin = `
   <div class="container">
@@ -17,10 +19,13 @@ export const login = () => {
   <button type="submit" class="btn-ing">Ingresar</button>
   </div>
   <p>Regístrate con :</p>
-   <input type= "image" src="/img/google1.png"  class="btn" alt="">
+   <input type= "image" src="/img/google1.png"  id ="btnGoogle" class="btn" alt="">
   </div>
   <p>Si no tienes una cuenta <a href="#">Regístrate</a></p>
   </div>
   `;
+  document.getElementById('btnGoogle').addEventListener('click', () => {
+    signIn();
+  });
   return viewLogin;
 };
