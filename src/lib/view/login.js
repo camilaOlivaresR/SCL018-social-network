@@ -1,4 +1,7 @@
+import {signInGoogle } from "./firebase.js";
+
 export const login = () => {
+  const containerLogin = document.createElement("section");
   const viewLogin = `
   <div class="container">
   <img src="/img/logo.png" class="logo" alt="Logo Sport Fem">
@@ -16,11 +19,25 @@ export const login = () => {
   <div class="btn">
   <button type="submit" class="btn-ing">Ingresar</button>
   </div>
-  <p>Regístrate con :</p>
-   <input type= "image" src="/img/google1.png"  class="btn" alt="">
+  <p>Accede con :</p>
+  <button id="loginGoogle">google</button>
+   <a href="#" class="fa fa-google" ></a>
   </div>
   <p>Si no tienes una cuenta <a href="#">Regístrate</a></p>
   </div>
   `;
-  return viewLogin;
+  containerLogin.innerHTML = viewLogin;
+  containerLogin.querySelector("#loginGoogle").addEventListener("click", () => {
+    signInGoogle();
+  });
+
+ return viewLogin;
 };
+ /*const btn = document.querySelector("#loginGoogle");
+  btn.addEventListener("click", () => {
+   register()
+ })
+const btnLogin = divElement.querySelector('#loginGoogle');
+btnGoogle.addEventListener('click',() =>{
+alert():
+});*/
