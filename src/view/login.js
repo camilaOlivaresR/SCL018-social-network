@@ -23,22 +23,14 @@ export const login = () => {
   <button id="loginGoogle">google</button>
    <a href="#" class="fa fa-google" ></a>
   </div>
-  <p>Si no tienes una cuenta <a href="#">Regístrate</a></p>
+  <p>Si no tienes una cuenta <a href="#" id= "Registration">Regístrate</a></p>
   </div>
   `;
   containerLogin.innerHTML = viewLogin;
   containerLogin.querySelector("#loginGoogle").addEventListener("click", () => {
     signInGoogle();
   });
-
+  containerLogin.querySelector("#Registration").addEventListener("click", () => {
+  });
   return containerLogin;
-
 };
-/*const btn = document.querySelector("#loginGoogle");
-  btn.addEventListener("click", () => {
-   register()
- })
-const btnLogin = divElement.querySelector('#loginGoogle');
-btnGoogle.addEventListener('click',() =>{
-alert():
-});*/
