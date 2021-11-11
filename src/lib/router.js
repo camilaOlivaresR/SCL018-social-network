@@ -1,7 +1,7 @@
 
 
 
-/*export const changeRoute = (hash) => {
+export const changeRoute = (hash) => {
     if(hash === "#/"){
         return showTemplate(hash)
     } else if (hash === "#/personajes"){
@@ -14,4 +14,4 @@
 const showTemplate = (hash) => {
     const containerRoot = document.getElementById("root");
     containerRoot.innerHTML= menu();
-}*/
+}

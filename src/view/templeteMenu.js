@@ -1,3 +1,4 @@
+
 export const menu = () => {
   const viewMenu = `
     <nav>
