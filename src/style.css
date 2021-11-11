@@ -29,22 +29,37 @@ body{
     padding: 1em;
     width: 17em;
     height: 3em;
+    outline: none;
 }
+.name:hover{
+    border: 2px solid yellowgreen;
+}
+
 .btn{
     padding: 0.5em;  
 }
+<<<<<<< HEAD
 .btn-ing{
     
+=======
+.btn-ing, .formBtn{
+>>>>>>> 9776b9ef839ac66b43eb2c20317c096610efddbb
     height: 30px;
     margin-top: 1em;
     width: 17em;
     background-color:yellowgreen;
-    
+    outline: none;  
 }
+<<<<<<< HEAD
 .btn-ing:hover {
     background-color: #0afa12;
   }
    
+=======
+.btn-ing, .formBtn:hover{
+    border: 2px solid yellowgreen;  
+}  
+>>>>>>> 9776b9ef839ac66b43eb2c20317c096610efddbb
 p{
     padding: 1.5em;
     color:white;
@@ -63,6 +78,7 @@ a{
    justify-content: center;
    margin-right: 20px;
 }
+<<<<<<< HEAD
 .fa {
     padding: 20px;
     font-size: 30px;
@@ -83,3 +99,22 @@ a{
     color: white;
   }
   
+=======
+.form{
+    padding: 1em;
+    width: 17em;
+    height: 3em;
+    margin-top: 1em;  
+    outline: none;
+}
+.form:hover{
+    border: 2px solid yellowgreen;
+}
+
+/*HOME*/
+.icono{
+    width: 100px;
+    color:yellowgreen;
+}
+
+>>>>>>> 9776b9ef839ac66b43eb2c20317c096610efddbb
