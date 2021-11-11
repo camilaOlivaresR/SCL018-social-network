@@ -1,4 +1,4 @@
-import { signInGoogle } from "./firebase.js";
+import { signInGoogle } from "../lib/firebase.js";
 
 export const login = () => {
   const containerLogin = document.createElement("section");
@@ -31,7 +31,8 @@ export const login = () => {
     signInGoogle();
   });
 
-  return viewLogin;
+  return containerLogin;
+
 };
 /*const btn = document.querySelector("#loginGoogle");
   btn.addEventListener("click", () => {

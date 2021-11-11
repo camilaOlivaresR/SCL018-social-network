@@ -1,18 +1,19 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";
+/* eslint-disable import/no-unresolved */
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js';
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
-} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
+} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk",
-  authDomain: "red-social-sport-fem.firebaseapp.com",
-  projectId: "red-social-sport-fem",
-  storageBucket: "red-social-sport-fem.appspot.com",
-  messagingSenderId: "136278586908",
-  appId: "1:136278586908:web:90cef68cefc0a1dc1751d9",
-  measurementId: "G-QK2DZJ2H58",
+  apiKey: 'AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk',
+  authDomain: 'red-social-sport-fem.firebaseapp.com',
+  projectId: 'red-social-sport-fem',
+  storageBucket: 'red-social-sport-fem.appspot.com',
+  messagingSenderId: '136278586908',
+  appId: '1:136278586908:web:90cef68cefc0a1dc1751d9',
+  measurementId: 'G-QK2DZJ2H58',
 };
 
 // Initialize Firebase
@@ -29,7 +30,7 @@ export const signInGoogle = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      console.log("user", user);
+      console.log('user', user);
       // ...
     })
     .catch((error) => {
@@ -40,10 +41,10 @@ export const signInGoogle = () => {
       const email = error.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log("error", errorMessage);
+      console.log('error', errorMessage);
     });
 };
-/*export const loginWithGoogle = () => {
+/* export const loginWithGoogle = () => {
   signInWithRedirect(auth, provider);
   getRedirectResult(auth)
     .then((result) => {
@@ -66,4 +67,4 @@ export const signInGoogle = () => {
       // ...
       console.log(errorMessage);
     });
-};*/
+}; */
