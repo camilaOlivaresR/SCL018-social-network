@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-export const register = () =>
-const viewRegister =
-=======
 export const register = () => {
     const formRegister = document.createElement("section");
     const viewRegister = `
@@ -25,4 +21,3 @@ export const register = () => {
 formRegister.innerHTML = viewRegister;
 return viewRegister;
 };
->>>>>>> 9776b9ef839ac66b43eb2c20317c096610efddbb
