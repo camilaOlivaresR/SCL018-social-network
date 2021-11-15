@@ -4,6 +4,11 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword ,
+  getRedirectResult,//Luego, para recuperar el token de OAuth del proveedor de Google, puedes llamar a getRedirectResult cuando se cargue tu página: 
+
+
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
 
 const firebaseConfig = {
@@ -24,6 +29,7 @@ const provider = new GoogleAuthProvider(app);
 
 export const signInGoogle = () => {
   signInWithPopup(auth, provider)
+  getRedirectResult(auth)//Luego, para recuperar el token de OAuth del proveedor de Google, puedes llamar a getRedirectResult cuando se cargue tu página: 
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -44,3 +50,41 @@ export const signInGoogle = () => {
       console.log('error', errorMessage);
     });
 };
+//REGISTRO EMAIL Y PASSWORD
+export const signInEmail = () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+        return user;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+        return errorCode + errorMessage;
+      });
+  };
+  export const signInLogin = () =>{
+      const emaiLogin = document.getElementById(loginEmail).value;
+      const passwordLogin = document.getElementById(loginPassword).value;
+  
+      signInWithEmailAndPassword(auth, emaiLogin, passwordLogin)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    return errorCode + errorMessage;
+  });
+
+    } 
+
+  

@@ -52,6 +52,10 @@ p{
     padding: 1.5em;
     color:white;
 }
+h1{
+    padding: 1.5em;
+    color:white;
+}
 a{
     color:yellowgreen;
 }
@@ -65,7 +69,7 @@ a{
     width: 17em;
     justify-content: center;
     margin-right: 20px;
- 
+  
 }
 .form{
     padding: 1em;

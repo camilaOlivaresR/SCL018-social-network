@@ -11,4 +11,4 @@ import { login } from './view/login.js';
 myFunction();
 //document.getElementById("root").innerHTML = menu();
 document.getElementById("root").appendChild(login());
-//document.getElementById("root").innerHTML = register();
+//document.getElementById("root").appendChild(register());
