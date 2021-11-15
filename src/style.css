@@ -63,6 +63,7 @@ a{
     order:5;
     text-align: center;
 }
+
 .google {
     display: flex;
     height: 30px;
@@ -70,7 +71,6 @@ a{
     justify-content: center;
     margin-right: 20px;
   
-}
 .form{
     padding: 1em;
     width: 17em;

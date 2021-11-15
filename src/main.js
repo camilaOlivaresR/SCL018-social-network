@@ -1,6 +1,9 @@
 // Este es el punto de entrada de tu aplicacion
 
 import { myFunction } from './lib/index.js';
+import { menu } from './lib/view/templeteMenu.js';
+//import { login } from './lib/view/login.js';
+import { register } from './lib/view/register.js';
 
 myFunction();
 //import { myFunction } from './lib/index.js';
