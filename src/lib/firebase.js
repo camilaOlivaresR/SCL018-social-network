@@ -50,12 +50,12 @@ export const signInGoogle = () => {
       console.log('error', errorMessage);
     });
 };
-//REGISTRO EMAIL Y PASSWORD
-export const signInEmail = () => {
+//REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
+export const newEmail = () => {
     const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const newpassword = document.getElementById("password").value;
     
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, newpassword)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -69,9 +69,10 @@ export const signInEmail = () => {
         return errorCode + errorMessage;
       });
   };
-  export const signInLogin = () =>{
-      const emaiLogin = document.getElementById(loginEmail).value;
-      const passwordLogin = document.getElementById(loginPassword).value;
+ 
+  /*export const logEmail = () =>{
+      const emaiLogin = document.getElementById(logEmail).value;
+      const passwordLogin = document.getElementById(logPassword).value;
   
       signInWithEmailAndPassword(auth, emaiLogin, passwordLogin)
   .then((userCredential) => {
@@ -86,5 +87,5 @@ export const signInEmail = () => {
   });
 
     } 
-
+*/
   

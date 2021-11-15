@@ -33,10 +33,11 @@ export const login = () => {
     signInGoogle();
   });
  /* containerLogin.querySelector("#btn-login").addEventListener("click", () => {
-    ignInLogin();
+    signInLogin();
   });
   */
  //hash register
+
 
   return containerLogin;
 
