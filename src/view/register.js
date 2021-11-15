@@ -5,11 +5,11 @@ export const register = () => {
     <div class="container">
     <form class="login">
     <section>
-        <input type="text"class="form"
+        <input type="text"class="form" id="email"
           placeholder="Ingresa tu nombre"/>
         </section>
         <section>
-          <input type="text"class="form"
+          <input type="text"class="form" id="password"
           placeholder="Ingresa tu email"/>
           </section>
           <section>
@@ -19,5 +19,5 @@ export const register = () => {
           <button class="formBtn">Registrar</button>`
 
 formRegister.innerHTML = viewRegister;
-return viewRegister;
+return formRegister;
 };
