@@ -1,11 +1,10 @@
-@import url(https://allfont.es/allfont.css?fonts=sansation-regular);
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
 body{
-    font-family: 'Sansation Regular', arial;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(38, 38, 51);
 }
 .logo{
@@ -38,29 +37,31 @@ body{
 .btn{
     padding: 0.5em;  
 }
-<<<<<<< HEAD
+
 .btn-ing{
     
-=======
-.btn-ing, .formBtn{
->>>>>>> 9776b9ef839ac66b43eb2c20317c096610efddbb
+
     height: 30px;
     margin-top: 1em;
     width: 17em;
     background-color:yellowgreen;
     outline: none;  
 }
-<<<<<<< HEAD
+
 .btn-ing:hover {
     background-color: #0afa12;
   }
    
-=======
+
 .btn-ing, .formBtn:hover{
     border: 2px solid yellowgreen;  
 }  
->>>>>>> 9776b9ef839ac66b43eb2c20317c096610efddbb
+
 p{
+    padding: 1.5em;
+    color:white;
+}
+h1{
     padding: 1.5em;
     color:white;
 }
@@ -71,6 +72,7 @@ a{
     order:5;
     text-align: center;
 }
+
 .google{
    display: flex;
    height: 30px;
@@ -78,28 +80,16 @@ a{
    justify-content: center;
    margin-right: 20px;
 }
-<<<<<<< HEAD
-.fa {
-    padding: 20px;
-    font-size: 30px;
-    width: 50px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-  }
+
+.google {
+    display: flex;
+    height: 30px;
+    width: 17em;
+    justify-content: center;
+    margin-right: 20px;
   
-  .fa:hover {
-      opacity: 0.7;
-  }
-  
-  
-  
-  .fa-google {
-    background: #dd4b39;
-    color: white;
-  }
-  
-=======
+}
+
 .form{
     padding: 1em;
     width: 17em;
@@ -117,4 +107,4 @@ a{
     color:yellowgreen;
 }
 
->>>>>>> 9776b9ef839ac66b43eb2c20317c096610efddbb
+
