@@ -26,6 +26,9 @@ formRegister.innerHTML = viewRegister;
 formRegister.querySelector("#newRegister").addEventListener("click", () => {
   newEmail();
 });
+formRegister.querySelector(".formBtn").addEventListener("click", () => {
+  window.location.hash = "#/login";
+});
 return formRegister;
 
 };

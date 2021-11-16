@@ -1,4 +1,4 @@
-import { signInGoogle, /*signInLogin */} from "../lib/firebase.js";
+import { signInGoogle, logEmail} from "../lib/firebase.js";
 
 export const login = () => {
   const containerLogin = document.createElement("section");
@@ -9,11 +9,11 @@ export const login = () => {
   <div class="loginContainer">
   <form class="login">
   <section>
-      <input type="text"class="name" id"loginEmail"
+      <input type="text"class="name" id"logEmail"
         placeholder="Ingresa tu email"/>
       </section>
       <section>
-      <input type="text" class="password" id"loginPassword"
+      <input type="text" class="password" id"logPassword"
         placeholder="Ingresa tu contraseña"/>
   </section>
   </form>
@@ -23,7 +23,7 @@ export const login = () => {
   <div class ="google>"
   <p>Accede con :<p>
   <a id""><img src="/img/google1.png"  id="loginGoogle"></a>
-  <p>Si no tienes una cuenta <a href="#/registro" id="">Regístrate</a></p>
+  <p>Si no tienes una cuenta <a href="#/registro" id="registerBtn">Regístrate</a></p>
   </div>
   </div>
   </div>
@@ -32,11 +32,13 @@ export const login = () => {
   containerLogin.querySelector("#loginGoogle").addEventListener("click", () => {
     signInGoogle();
   });
- /* containerLogin.querySelector("#btn-login").addEventListener("click", () => {
-    signInLogin();
+  containerLogin.querySelector("#btn-login").addEventListener("click", () => {
+    logEmail();
   });
-  */
- //hash register
+  
+  containerLogin.querySelector("#registerBtn").addEventListener("click", () => {
+    window.location.hash = "#/register";
+  });
 
 
   return containerLogin;

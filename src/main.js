@@ -2,13 +2,13 @@
 //import { myFunction } from './lib/index.js';
 //import { menu } from './view/templateMenu.js'
 //import { login } from './view/login.js';
-//import {changeRoute} from './lib/router.js';
-import { register } from './view/register.js';
+import {changeRoute} from './lib/router.js';
+//import { register } from './view/register.js';
 //myFunction();
 
 //document.getElementById("root").innerHTML = menu();
 //document.getElementById("root").appendChild(login());
-document.getElementById("root").appendChild(register());
+//document.getElementById("root").appendChild(register());
 
 
 /*const init = () => {
