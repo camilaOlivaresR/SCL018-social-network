@@ -8,15 +8,15 @@
     <div class="container">
     <form class="login">
     <section>
-        <input type="text"class="form" id="email"
+        <input type="text"class="form" 
           placeholder="Ingresa tu nombre"/>
         </section>
         <section>
-          <input type="text"class="form" id="password"
+          <input type="email"class="form" id="email"
           placeholder="Ingresa tu email"/>
           </section>
           <section>
-        <input type="text" class="form"
+        <input type="password" class="form"id="password"
           placeholder="Ingresa tu contraseña"/>
           </section>
           <button class="formBtn" id="newRegister">Registrar</button>`
@@ -24,8 +24,12 @@
 formRegister.innerHTML = viewRegister;
 
 formRegister.querySelector("#newRegister").addEventListener("click", () => {
-  newEmail();
+  const email = formRegister.querySelector("#email").value;
+  const newpassword = formRegister.querySelector("#password").value;
+  newEmail(email, newpassword);
+
 });
+
 return formRegister;
 
 };

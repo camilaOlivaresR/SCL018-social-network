@@ -65,11 +65,9 @@ a{
 }
 .google {
     display: flex;
-    height: 30px;
-    width: 17em;
     justify-content: center;
-    margin-right: 20px;
-  
+    
+ 
 }
 .form{
     padding: 1em;

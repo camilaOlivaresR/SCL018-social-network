@@ -51,15 +51,20 @@ export const signInGoogle = () => {
     });
 };
 //REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
-export const newEmail = () => {
-    const email = document.getElementById("email").value;
-    const newpassword = document.getElementById("password").value;
-    
+export const newEmail = ( email, newpassword) => {
+   
+    //retornar esta funcion, hacer cambio de hash
     createUserWithEmailAndPassword(auth, email, newpassword)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // ...
+        console.log(user);
+        switch (hash) {
+          case '#/':
+          case "#/login":
+              containerRoot.appendChild(login());
+              break;
+        }
         return user;
       })
       .catch((error) => {
@@ -68,9 +73,10 @@ export const newEmail = () => {
         // ..
         return errorCode + errorMessage;
       });
+      return createUserWithEmailAndPassword;
   };
  
-  /*export const logEmail = () =>{
+ /* export const logEmail = () =>{
       const emaiLogin = document.getElementById(logEmail).value;
       const passwordLogin = document.getElementById(logPassword).value;
   
@@ -87,5 +93,6 @@ export const newEmail = () => {
   });
 
     } 
-*/
+    */
+
   
