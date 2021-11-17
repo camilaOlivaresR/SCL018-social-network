@@ -1,4 +1,4 @@
-import { signInGoogle, /*logEmail*/} from "../lib/firebase.js";
+import { signInGoogle, logEmail } from "../lib/firebase.js";
 
 export const login = () => {
   const containerLogin = document.createElement("section");
@@ -18,7 +18,7 @@ export const login = () => {
   </section>
   </form>
   <div class="btn">
-  <button type="submit" class="btn-ing" id"btn-login">Ingresar</button>
+  <button type="submit" class="btn-ing" id="btn-login">Ingresar</button>
   </div>
   <p>Accede con :<p>
   <div class ="google>"
@@ -32,10 +32,15 @@ export const login = () => {
   containerLogin.querySelector("#loginGoogle").addEventListener("click", () => {
     signInGoogle();
   });
- /* containerLogin.querySelector("#btn-login").addEventListener("click", () => {
-    logEmail();
+ 
+  containerLogin.querySelector("#btn-login").addEventListener("click", () => {
+    
+    const emaiLogin = containerLogin.querySelector('#loginEmail').value;
+    const passwordLogin = containerLogin.containerLogin("#loginPassword").value;  
+  logEmail(emaiLogin, passwordLogin);
   });
-  */
+
+
   return containerLogin;
 
 };

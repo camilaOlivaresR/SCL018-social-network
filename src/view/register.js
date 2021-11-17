@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { newEmail } from "../lib/firebase.js";
 
 export const register = () => {
@@ -32,4 +30,3 @@ export const register = () => {
 
   return formRegister;
 };
->>>>>>> dev
