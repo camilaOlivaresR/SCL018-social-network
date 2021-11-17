@@ -1,12 +1,10 @@
 
-import {changeRoute} from './lib/router.js';
-import { register } from './view/register.js';
 
-
-
-
+import { changeRoute } from "./lib/router.js";
+import { register } from "./view/register.js";
 
 const init = () => {
+
   
    window.location.hash= '#/login'
    changeRoute(window.location.hash);
@@ -18,3 +16,4 @@ const init = () => {
     changeRoute(window.location.hash);
     
 })
+

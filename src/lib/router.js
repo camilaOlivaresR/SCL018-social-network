@@ -1,3 +1,4 @@
+
 import { login } from '../view/login.js';
 import { register } from '../view/register.js';
 
@@ -23,5 +24,4 @@ export const changeRoute = (hash) => {
             containerRoot.innerHTML = `<h2>No Existe</h2>`
     };
 }
-
 

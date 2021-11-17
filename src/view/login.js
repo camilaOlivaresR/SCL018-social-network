@@ -39,9 +39,7 @@ export const login = () => {
     const passwordLogin = containerLogin.containerLogin("#loginPassword").value;  
   logEmail(emaiLogin, passwordLogin);
   });
-  
-  
- 
+
 
   return containerLogin;
 
