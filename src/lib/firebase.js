@@ -10,6 +10,7 @@ import {
 
 
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
+import { changeRoute } from './router.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk',
@@ -52,19 +53,15 @@ export const signInGoogle = () => {
 };
 //REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
 export const newEmail = ( email, newpassword) => {
-   
+   console.log(email);
     //retornar esta funcion, hacer cambio de hash
     createUserWithEmailAndPassword(auth, email, newpassword)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
-        switch (hash) {
-          case '#/':
-          case "#/login":
-              containerRoot.appendChild(login());
-              break;
-        }
+      
+      changeRoute("#/login");
         return user;
       })
       .catch((error) => {
@@ -76,15 +73,19 @@ export const newEmail = ( email, newpassword) => {
       return createUserWithEmailAndPassword;
   };
  
- /* export const logEmail = () =>{
-      const emaiLogin = document.getElementById(logEmail).value;
-      const passwordLogin = document.getElementById(logPassword).value;
+ export const logEmail = (emaiLogin, passwordLogin) =>{
+    
   
       signInWithEmailAndPassword(auth, emaiLogin, passwordLogin)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
-    // ...
+    switch (hash) {
+      case '#/':
+      case "#/templateHome":
+          containerRoot.appendChild(login());
+          break;
+    }
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -93,6 +94,6 @@ export const newEmail = ( email, newpassword) => {
   });
 
     } 
-    */
+    
 
   
