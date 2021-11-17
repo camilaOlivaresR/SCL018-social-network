@@ -5,14 +5,10 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   createUserWithEmailAndPassword,
-
-  signInWithEmailAndPassword ,
-  getRedirectResult,//Luego, para recuperar el token de OAuth del proveedor de Google, puedes llamar a getRedirectResult cuando se cargue tu página: 
-
-
-} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
-import { changeRoute } from './router.js';
-
+  signInWithEmailAndPassword,
+  getRedirectResult, //Luego, para recuperar el token de OAuth del proveedor de Google, puedes llamar a getRedirectResult cuando se cargue tu página:
+} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
+import { changeRoute } from "./router.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk",
@@ -55,47 +51,42 @@ export const signInGoogle = () => {
 };
 //REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
 
-export const newEmail = ( email, newpassword) => {
-   console.log(email);
-    //retornar esta funcion, hacer cambio de hash
-    createUserWithEmailAndPassword(auth, email, newpassword)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-      
-      changeRoute("#/login");
-        return user;
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-        return errorCode + errorMessage;
-      });
-      return createUserWithEmailAndPassword;
-  };
- 
- export const logEmail = (emaiLogin, passwordLogin) =>{
-    
+export const newEmail = (email, newpassword) => {
+  console.log(email);
+  //retornar esta funcion, hacer cambio de hash
+  createUserWithEmailAndPassword(auth, email, newpassword)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
 
-  
-      signInWithEmailAndPassword(auth, emaiLogin, passwordLogin)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    switch (hash) {
-      case '#/':
-      case "#/templateHome":
+      changeRoute("#/login");
+      return user;
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+      return errorCode + errorMessage;
+    });
+  return createUserWithEmailAndPassword;
+};
+
+export const logEmail = (emaiLogin, passwordLogin) => {
+  signInWithEmailAndPassword(auth, emaiLogin, passwordLogin)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      switch (hash) {
+        case "#/":
+        case "#/templateHome":
           containerRoot.appendChild(login());
           break;
-    }
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    return errorCode + errorMessage;
-  });
-
-    } 
-
+      }
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      return errorCode + errorMessage;
+    });
+};

@@ -32,15 +32,12 @@ export const login = () => {
   containerLogin.querySelector("#loginGoogle").addEventListener("click", () => {
     signInGoogle();
   });
- 
+
   containerLogin.querySelector("#btn-login").addEventListener("click", () => {
-    
-    const emaiLogin = containerLogin.querySelector('#loginEmail').value;
-    const passwordLogin = containerLogin.containerLogin("#loginPassword").value;  
-  logEmail(emaiLogin, passwordLogin);
+    const emaiLogin = containerLogin.querySelector("#loginEmail").value;
+    const passwordLogin = containerLogin.containerLogin("#loginPassword").value;
+    logEmail(emaiLogin, passwordLogin);
   });
 
-
   return containerLogin;
-
 };

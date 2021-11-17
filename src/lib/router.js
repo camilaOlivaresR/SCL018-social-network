@@ -1,4 +1,3 @@
-
 import { login } from '../view/login.js';
 import { register } from '../view/register.js';
 

@@ -68,8 +68,8 @@ a{
     display: flex;
     justify-content: center;
     margin-right: 20px;
-
-/*.form {
+}
+.form {
     padding: 1em;
     width: 17em;
     height: 3em;
