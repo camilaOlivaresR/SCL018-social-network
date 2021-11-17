@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d58124d7f8172982d6be1bab2d8270b0851f3b0
 *{
     margin:0;
     padding:0;
@@ -73,6 +77,7 @@ a{
     text-align: center;
 }
 
+<<<<<<< HEAD
 .google{
    display: flex;
    height: 30px;
@@ -81,22 +86,28 @@ a{
    margin-right: 20px;
 }
 
+=======
+>>>>>>> 3d58124d7f8172982d6be1bab2d8270b0851f3b0
 .google {
     display: flex;
-    height: 30px;
-    width: 17em;
     justify-content: center;
     margin-right: 20px;
+<<<<<<< HEAD
   
 }
 
 .form{
+=======
+}
+.form {
+>>>>>>> 3d58124d7f8172982d6be1bab2d8270b0851f3b0
     padding: 1em;
     width: 17em;
     height: 3em;
     margin-top: 1em;  
-    outline: none;
+    outline: none; */
 }
+
 .form:hover{
     border: 2px solid yellowgreen;
 }
@@ -107,4 +118,39 @@ a{
     color:yellowgreen;
 }
 
+<<<<<<< HEAD
 
+=======
+/* CSS MURO */
+
+.container-nav{
+display: grid;
+grid-template-columns: 25% 25% 25% 25%;
+}
+
+.logosportfemnav{
+    width: 180px;
+    height: 170px;
+    justify-content: center;
+
+}
+.icons{
+    width: 50px;
+    height: 50px;
+   
+}
+
+.iconpost{
+    width: 40px;
+    height: 40px;
+    flex-direction: row;
+   
+}
+
+.container-home{
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+>>>>>>> 3d58124d7f8172982d6be1bab2d8270b0851f3b0
