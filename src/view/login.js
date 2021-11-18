@@ -3,7 +3,6 @@ import { signInGoogle, logEmail } from "../lib/firebase.js";
 export const login = () => {
   const containerLogin = document.createElement("section");
   const viewLogin = `
-
   <div class="container">
   <img src="/img/logo.png" class="logo" alt="Logo Sport Fem">
   <div class="loginContainer">
@@ -18,11 +17,11 @@ export const login = () => {
   </section>
   </form>
   <div class="btn">
-  <button type="submit" class="btn-ing" id="btn-login">Ingresar</button>
+  <button type="submit" class="btn-ing" id="btn-login"> <a href="#/templateHome">Ingresar</a></button>
   </div>
   <p>Accede con :<p>
   <div class ="google>"
-  <a><img src="/img/google1.png"  id="loginGoogle"></a>
+  <a href="#/templateHome"><img src="/img/google1.png"  id="loginGoogle"></a>
   </div>
   <p>Si no tienes una cuenta <a href="#/register" id="registerBtn">Regístrate</a></p>
   </div>
