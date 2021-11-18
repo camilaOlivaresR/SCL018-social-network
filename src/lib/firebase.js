@@ -36,6 +36,8 @@ export const signInGoogle = () => {
       // The signed-in user info.
       const user = result.user;
       console.log("user", user);
+      changeRoute("#/templateHome");
+      return user;
       // ...
     })
     .catch((error) => {
@@ -77,12 +79,9 @@ export const logEmail = (emaiLogin, passwordLogin) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      switch (hash) {
-        case "#/":
-        case "#/templateHome":
-          containerRoot.appendChild(login());
-          break;
-      }
+      changeRoute("#/templateHome");
+          return user;
+      
     })
     .catch((error) => {
       const errorCode = error.code;
