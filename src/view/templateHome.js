@@ -1,7 +1,6 @@
-
 export const home = () => {
-    const containerHome = document.createElement("section");
-    const viewHome = `
+  const containerHome = document.createElement("section");
+  const viewHome = `
     
     <div class="container-home">
 
@@ -31,8 +30,6 @@ export const home = () => {
    
   </main>
 </div>`;
-containerHome.innerHTML = viewHome;
-
-
-return containerHome;
+  containerHome.innerHTML = viewHome;
+  return containerHome;
 };
