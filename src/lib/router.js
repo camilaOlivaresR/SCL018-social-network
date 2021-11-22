@@ -1,10 +1,10 @@
 import { login } from '../view/login.js';
 import { register } from '../view/register.js';
 import { home } from '../view/templateHome.js';
-
+ 
 export const changeRoute = (hash) => {
     const containerRoot = document.getElementById('root');
-    containerRoot.innerHTML = "";
+    containerRoot.innerHTML = '';
     switch (hash) {
         case '#/':
         case '#/login':
@@ -15,7 +15,7 @@ export const changeRoute = (hash) => {
             containerRoot.appendChild(register());
             break;
 
-       case '#/templateHome':
+        case '#/templateHome':
             containerRoot.appendChild(home());
             break;
 

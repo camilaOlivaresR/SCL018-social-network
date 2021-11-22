@@ -4,7 +4,14 @@ export const home = () => {
     const viewHome = `
     
     <div class="container-home">
+    <section>
+    <input type="text" placeholder="titulo" maxlength="100" id="title">
+   <textarea name="publication" id="publish" cols="50" rows="10">Escribe tu comentario</textarea>
+    
+    <button class="publicar-btn" id="publish-btn">Publicar</button>
+  </section>
 
+   <!--
     <nav>
       <ul  style="list-style: none;" class="container-nav">
         <li><img class="logosportfemnav" src="img/logo.png" alt="Sportfem"></li>
@@ -30,9 +37,16 @@ export const home = () => {
     </ul>
    
   </main>
+  -->
 </div>`;
 containerHome.innerHTML = viewHome;
 
 
 return containerHome;
 };
+
+const titulo = document.getElementById("title");
+titulo.addEventListener(click, ()=>{
+  const input = document.getElementById("publish-btn");
+  console.log(input);
+})

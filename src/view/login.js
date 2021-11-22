@@ -20,8 +20,8 @@ export const login = () => {
   <button type="submit" class="btn-ing" id="btn-login"> <a href="#/templateHome">Ingresar</a></button>
   </div>
   <p>Accede con :<p>
-  <div class ="google>"
-  <a href="#/templateHome"><img src="/img/google1.png"  id="loginGoogle"></a>
+  <div class ="google">
+  <img src="/img/google1.png"  id="loginGoogle">
   </div>
   <p>Si no tienes una cuenta <a href="#/register" id="registerBtn">Regístrate</a></p>
   </div>
