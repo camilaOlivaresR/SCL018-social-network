@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
  
 } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
 
 
 const firebaseConfig = {
@@ -23,6 +24,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 console.log(app);
 
 
@@ -81,7 +83,7 @@ export const logEmail = (emaiLogin, passwordLogin) => {
       // Signed in
       const user = userCredential.user;
       window.location.hash= '#/templateHome'
-          return user;
+          
       
     })
     .catch((error) => {
@@ -90,3 +92,22 @@ export const logEmail = (emaiLogin, passwordLogin) => {
       return errorCode + errorMessage;
     });
 };
+
+// Add a new document with a generated id, post
+
+export const postear = async (input) => {
+  const docRef = await addDoc(collection(db, "contenido"), {
+    title: input
+  });
+  console.log("Document written with ID: ", docRef.id);
+  return docRef;
+  
+  
+}
+export const readData = async () => {
+  const querySnapshot = await getDocs(collection(db, "contenido"));
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+}

@@ -1,3 +1,4 @@
+import { postear, readData } from "../lib/firebase.js";
 
 export const home = () => {
     const containerHome = document.createElement("section");
@@ -41,12 +42,13 @@ export const home = () => {
 </div>`;
 containerHome.innerHTML = viewHome;
 
-
+readData();//callback
+const titulo = containerHome.querySelector("#publish-btn");
+titulo.addEventListener("click", () => {
+  const input = containerHome.querySelector("#title").value;
+  console.log(input);
+  postear(input);
+ 
+})
 return containerHome;
 };
-
-const titulo = document.getElementById("title");
-titulo.addEventListener(click, ()=>{
-  const input = document.getElementById("publish-btn");
-  console.log(input);
-})
