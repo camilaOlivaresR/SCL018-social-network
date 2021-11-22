@@ -1,9 +1,20 @@
+
+import { postear, readData } from "../lib/firebase.js";
+
+
 export const home = () => {
   const containerHome = document.createElement("section");
   const viewHome = `
     
     <div class="container-home">
+    <section>
+    <input type="text" placeholder="titulo" maxlength="100" id="title">
+   <textarea name="publication" id="publish" cols="50" rows="10">Escribe tu comentario</textarea>
+    
+    <button class="publicar-btn" id="publish-btn">Publicar</button>
+  </section>
 
+   <!--
     <nav>
       <ul  style="list-style: none;" class="container-nav">
         <li><img class="logosportfemnav" src="img/logo.png" alt="Sportfem"></li>
@@ -29,7 +40,18 @@ export const home = () => {
     </ul>
    
   </main>
+  -->
 </div>`;
-  containerHome.innerHTML = viewHome;
-  return containerHome;
-};
+
+containerHome.innerHTML = viewHome;
+
+readData();//callback
+const titulo = containerHome.querySelector("#publish-btn");
+titulo.addEventListener("click", () => {
+  const input = containerHome.querySelector("#title").value;
+  console.log(input);
+  postear(input);
+ 
+})
+return containerHome;
+

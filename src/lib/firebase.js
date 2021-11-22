@@ -7,7 +7,12 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
+
+ 
+} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
+
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk',
@@ -23,9 +28,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+const db = getFirestore(app);
+console.log(app);
+
+
+
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider(app);
   signInWithPopup(auth, provider)
+
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -56,7 +67,9 @@ export const newEmail = (email, newpassword) => {
       // Signed in
       const user = userCredential.user;
 
-      window.location.hash = '#/login';
+
+      window.location.hash= '#/login'
+
       return user;
     })
     .catch((error) => {
@@ -67,14 +80,16 @@ export const newEmail = (email, newpassword) => {
     });
   return createUserWithEmailAndPassword;
 };
-
+//USUARIOS REGISTRADOS
 export const logEmail = (emaiLogin, passwordLogin) => {
   signInWithEmailAndPassword(auth, emaiLogin, passwordLogin)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      window.location.hash = '#/templateHome';
-      return user;
+
+      window.location.hash= '#/templateHome'
+          
+
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -82,3 +97,22 @@ export const logEmail = (emaiLogin, passwordLogin) => {
       return errorCode + errorMessage;
     });
 };
+
+// Add a new document with a generated id, post
+
+export const postear = async (input) => {
+  const docRef = await addDoc(collection(db, "contenido"), {
+    title: input
+  });
+  console.log("Document written with ID: ", docRef.id);
+  return docRef;
+  
+  
+}
+export const readData = async () => {
+  const querySnapshot = await getDocs(collection(db, "contenido"));
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+}
