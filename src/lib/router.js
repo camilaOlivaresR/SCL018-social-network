@@ -1,8 +1,10 @@
+/* eslint-disable import/no-cycle */
 import { login } from '../view/login.js';
 import { register } from '../view/register.js';
 import { home } from '../view/templateHome.js';
  
 export const changeRoute = (hash) => {
+
     const containerRoot = document.getElementById('root');
     containerRoot.innerHTML = '';
     switch (hash) {
@@ -24,5 +26,4 @@ export const changeRoute = (hash) => {
             containerRoot.innerHTML = `<h2 class="default">No Encontrado</h2>`
     };
 }
-
 

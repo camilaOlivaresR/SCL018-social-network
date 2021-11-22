@@ -1,7 +1,7 @@
-import { changeRoute } from "./lib/router.js";
-
+import { changeRoute } from './lib/router.js';
 
 const init = () => {
+
 
 
    window.location.hash = '#/login'

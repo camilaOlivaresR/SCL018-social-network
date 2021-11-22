@@ -1,5 +1,4 @@
-
-/*export const menu = () => {
+/* export const menu = () => {
   const viewMenu = `
     <nav>
       <ul class ="ordenNav">

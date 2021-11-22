@@ -90,44 +90,38 @@ a{
     border: 2px solid yellowgreen;
 }
 
-/*HOME*/
-.icono{
-    width: 100px;
-    color:yellowgreen;
-}
 
 /* CSS MURO */
 
-.container-nav{
-display: grid;
-grid-template-columns: 25% 25% 25% 25%;
-}
-
-.logosportfemnav{
-    width: 180px;
-    height: 170px;
-    justify-content: center;
-
-}
 .icons{
-    width: 50px;
-    height: 50px;
-   
+width: 200px;
+height: 200px;
 }
+.container-home{
+    width: 900px;
+}
+.container-nav{
+    display: grid;
+    grid-template-columns: 600px 100px;
+    grid-column-end: 3;
+    justify-content: center;
+}
+.container-menu{
+ display: grid;
+ grid-template-columns:1fr 1fr 1fr;
+ grid-column-end: 3;
+ justify-content: center;
+ 
+
+}
+
 
 .iconpost{
-    width: 40px;
-    height: 40px;
-    flex-direction: row;
-   
+    width: 200px;
+    height: 200px;
 }
 
-.container-home{
-    display: flex;
-    padding: 10px;
-    flex-wrap: wrap;
-    align-content: center;
-}
+
 .default {
    
     color: #fff;
