@@ -20,7 +20,7 @@ export const home = () => {
   </nav>
   <section class="container-home">
   <textarea type="text" placeholder="Publica aquí" id="title" cols="20" rows="10"class="espaciado"></textarea>
-  <button class="publicar-btn" id="publish-btn" class="espaciado">Publicar</button>
+  <button class="publicar-btn" id="publish-btn">Publicar</button>
   </section> 
   <section id = "publicaciones" class="post">
   
