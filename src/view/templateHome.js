@@ -19,10 +19,12 @@ export const home = () => {
       </ul>
   </nav>
   <section class="container-home">
-  <input type="text" placeholder="titulo" maxlength="100" id="title" class="espaciado">
-  <textarea name="publication" id="publish"  class="espaciado" cols="50" rows="10" placeholder="Escribe tu comentario"></textarea>
+  <textarea type="text" placeholder="Publica aquí" id="title" cols="20" rows="10"class="espaciado"></textarea>
   <button class="publicar-btn" id="publish-btn" class="espaciado">Publicar</button>
   </section> 
+  <section id = "publicaciones" class="post">
+  
+  </section>
   
   <!--<main>
     <div class="container-wall"></div>
@@ -42,8 +44,16 @@ export const home = () => {
 </div>`;
 
   containerHome.innerHTML = viewHome;
+  const post = (publicaciones) => {
+    publicaciones.forEach((element) => {
+      containerHome.querySelector("#publicaciones").innerHTML += `
+      <div class= "contenedorPost">
+      <p name="publication" id="publish">${element.title}</p>
+      </div>`
+    });
+  };
 
-  readData(); //callback
+  readData(post); //callback
   const titulo = containerHome.querySelector("#publish-btn");
   titulo.addEventListener("click", () => {
     const input = containerHome.querySelector("#title").value;
@@ -51,12 +61,6 @@ export const home = () => {
     console.log(input, input2);
     postear(input);
   });
-  return containerHome;
-};
 
-export const post = () => {
-  const viewPost = `${new titulo()}`;
-  post.addEventListener("click", () => {
-    container.innerHTML += post();
-  });
+  return containerHome;
 };

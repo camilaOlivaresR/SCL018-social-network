@@ -1,28 +1,29 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-unresolved */
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js";
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
+} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
 import {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
-} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js';
+  query,
+  onSnapshot,
+} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk',
-  authDomain: 'red-social-sport-fem.firebaseapp.com',
-  projectId: 'red-social-sport-fem',
-  storageBucket: 'red-social-sport-fem.appspot.com',
-  messagingSenderId: '136278586908',
-  appId: '1:136278586908:web:90cef68cefc0a1dc1751d9',
-  measurementId: 'G-QK2DZJ2H58',
+  apiKey: "AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk",
+  authDomain: "red-social-sport-fem.firebaseapp.com",
+  projectId: "red-social-sport-fem",
+  storageBucket: "red-social-sport-fem.appspot.com",
+  messagingSenderId: "136278586908",
+  appId: "1:136278586908:web:90cef68cefc0a1dc1751d9",
+  measurementId: "G-QK2DZJ2H58",
 };
 
 // Initialize Firebase
@@ -42,7 +43,7 @@ export const signInGoogle = () => {
       // The signed-in user info.
       const user = result.user;
 
-      window.location.hash = '#/templateHome';
+      window.location.hash = "#/templateHome";
       return user;
       // ...
     })
@@ -65,7 +66,7 @@ export const newEmail = (email, newpassword) => {
       // Signed in
       const user = userCredential.user;
 
-      window.location.hash = '#/login';
+      window.location.hash = "#/login";
 
       return user;
     })
@@ -84,7 +85,7 @@ export const logEmail = (emaiLogin, passwordLogin) => {
       // Signed in
       const user = userCredential.user;
 
-      window.location.hash = '#/templateHome';
+      window.location.hash = "#/templateHome";
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -96,16 +97,25 @@ export const logEmail = (emaiLogin, passwordLogin) => {
 // Add a new document with a generated id, post
 
 export const postear = async (input) => {
-  const docRef = await addDoc(collection(db, 'contenido'), {
+  const user = auth.currentUser;
+  const docRef = await addDoc(collection(db, "contenido"), {
     title: input,
+    description: input,
+    correo: user.email,
+    foto: user.photoURL,
   });
-  console.log('Document written with ID: ', docRef.id);
+
+  console.log("Document written with ID: ", docRef.id);
   return docRef;
 };
-export const readData = async () => {
-  const querySnapshot = await getDocs(collection(db, 'contenido'));
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, ' => ', doc.data());
+export const readData = (callback) => {
+  const q = query(collection(db, "contenido"));
+  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    const cities = [];
+    querySnapshot.forEach((doc) => {
+      cities.push(doc.data());
+      console.log(doc.data());
+    });
+    callback(cities);
   });
 };
