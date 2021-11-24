@@ -1,7 +1,8 @@
-import { signInGoogle, logEmail } from "../lib/firebase.js";
+/* eslint-disable import/no-cycle */
+import { signInGoogle, logEmail } from '../lib/firebase.js';
 
 export const login = () => {
-  const containerLogin = document.createElement("section");
+  const containerLogin = document.createElement('section');
   const viewLogin = `
   <div class="container">
   <img src="/img/logo.png" class="logo" alt="Logo Sport Fem">
@@ -28,13 +29,13 @@ export const login = () => {
   </div>
   `;
   containerLogin.innerHTML = viewLogin;
-  containerLogin.querySelector("#loginGoogle").addEventListener("click", () => {
+  containerLogin.querySelector('#loginGoogle').addEventListener('click', () => {
     signInGoogle();
   });
 
-  containerLogin.querySelector("#btn-login").addEventListener("click", () => {
-    const emaiLogin = containerLogin.querySelector("#loginEmail").value;
-    const passwordLogin = containerLogin.containerLogin("#loginPassword").value;
+  containerLogin.querySelector('#btn-login').addEventListener('click', () => {
+    const emaiLogin = containerLogin.querySelector('#loginEmail').value;
+    const passwordLogin = containerLogin.containerLogin('#loginPassword').value;
     logEmail(emaiLogin, passwordLogin);
   });
 

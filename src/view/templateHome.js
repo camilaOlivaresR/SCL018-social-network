@@ -1,8 +1,10 @@
+
 import { postear, readData } from "../lib/firebase.js";
 
+
 export const home = () => {
-    const containerHome = document.createElement("section");
-    const viewHome = `
+  const containerHome = document.createElement("section");
+  const viewHome = `
     
     <div class="container-home">
     <section>
@@ -40,6 +42,7 @@ export const home = () => {
   </main>
 
 </div>`;
+
 containerHome.innerHTML = viewHome;
 
 readData();//callback
@@ -51,4 +54,4 @@ titulo.addEventListener("click", () => {
  
 })
 return containerHome;
-};
+
