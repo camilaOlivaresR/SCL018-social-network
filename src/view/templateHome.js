@@ -12,7 +12,7 @@ export const home = () => {
     <button class="publicar-btn" id="publish-btn">Publicar</button>
   </section>
 
-   <!--
+   
     <nav>
       <ul  style="list-style: none;" class="container-nav">
         <li><img class="logosportfemnav" src="img/logo.png" alt="Sportfem"></li>
@@ -38,7 +38,7 @@ export const home = () => {
     </ul>
    
   </main>
-  -->
+
 </div>`;
 containerHome.innerHTML = viewHome;
 
