@@ -153,8 +153,9 @@ a {
 .contenedorPost{
   background-color: white;
   border: 1px solid yellowgreen;
-  height: 200px;
+  height:  auto;
   width: 250px;
+  border-radius: 10px;
   margin-top: 30px;
   
 }
@@ -163,12 +164,22 @@ a {
 }
 .publicar-btn{
   margin-top: 10px;
-  width: 80px;
-  height: 50px;
+  width: 250px;
+  height: 30px;
   border-radius: 10px;
-  background-color: rgb(230, 159, 29) ;
+  background-color: #F88207;
   color:white;
 }
 .publicar-btn:hover{
-  background-color: rgb(230, 182, 94) ;
+  background-color: #F88207;
+}
+
+.like-icons{
+  display: flex;
+  flex-direction:row;
+}
+
+.iconpost{
+  width: 50px;
+  height: 50px;
 }
