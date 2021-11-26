@@ -16,6 +16,9 @@ import {
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
 
+//import { doc, deleteDoc } from "firebase/firestore";Borrar post
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk",
   authDomain: "red-social-sport-fem.firebaseapp.com",
@@ -59,13 +62,14 @@ export const signInGoogle = () => {
 };
 // REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
 
-export const newEmail = (email, newpassword) => {
+export const newEmail = (email, newpassword, names) => {
   // retornar esta funcion, hacer cambio de hash
   createUserWithEmailAndPassword(auth, email, newpassword)
+  //esto me regresa una promesa, then= resultado de una promesa
     .then((userCredential) => {
-      // Signed in
+      // Signed in/ result de la promesa 
       const user = userCredential.user;
-
+     
       window.location.hash = "#/login";
 
       return user;
@@ -103,19 +107,35 @@ export const postear = async (input) => {
     description: input,
     correo: user.email,
     foto: user.photoURL,
+    id: "",
+    //id: auth.currentUser.uid,
+
   });
 
   console.log("Document written with ID: ", docRef.id);
-  return docRef;
+ 
+  docRef.id.update(id)
+ // return docRef;
 };
 export const readData = (callback) => {
   const q = query(collection(db, "contenido"));
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    const cities = [];
+    const posting = [];
     querySnapshot.forEach((doc) => {
-      cities.push(doc.data());
-      console.log(doc.data());
+     /* const element = {};
+      element.id = doc.id;
+      element.data = doc.data(),*/
+      posting.push(doc.data());
+
+      
     });
-    callback(cities);
+    callback(posting);
   });
 };
+
+
+export const deleteDoc = async(id) => {
+   
+ await deleteDoc(doc(db, "contendido", id));
+ }
+ 
