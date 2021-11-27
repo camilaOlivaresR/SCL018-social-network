@@ -7,7 +7,7 @@ export const register = () => {
     <div class="container">
     <form class="login">
     <section>
-        <input type="text"class="form" 
+        <input type="text"class="form" id="nickname"
           placeholder="Ingresa tu nombre"/>
         </section>
         <section>
@@ -25,7 +25,8 @@ export const register = () => {
   formRegister.querySelector('#newRegister').addEventListener('click', () => {
     const email = formRegister.querySelector('#email').value;
     const newpassword = formRegister.querySelector('#password').value;
-    newEmail(email, newpassword);
+    const newname = formRegister.querySelector('#nikname').value;
+    newEmail(email, newpassword , newname);
   });
 
   return formRegister;

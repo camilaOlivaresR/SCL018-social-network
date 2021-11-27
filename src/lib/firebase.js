@@ -14,9 +14,10 @@ import {
   addDoc,
   query,
   onSnapshot,
+  // { doc, deleteDoc, , updateDoc , Timestamp, orderBy} 
 } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
 
-//import { doc, deleteDoc } from "firebase/firestore";Borrar post
+
 
 
 const firebaseConfig = {
@@ -35,6 +36,8 @@ const auth = getAuth(app);
 
 const db = getFirestore(app);
 console.log(app);
+
+//AUTENTICACION GOOGLE
 
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider(app);
@@ -69,6 +72,8 @@ export const newEmail = (email, newpassword, names) => {
     .then((userCredential) => {
       // Signed in/ result de la promesa 
       const user = userCredential.user;
+       //consultar o actualizar la data basica del usuario como url de la foto
+     
      
       window.location.hash = "#/login";
 
@@ -80,7 +85,29 @@ export const newEmail = (email, newpassword, names) => {
       // ..
       return errorCode + errorMessage;
     });
+     //se hace consultando elidentificador unico que nos genera firebase
+      /* actualizar el nombre que el usuario eligio al registrarse
+      .then((result) => {
+        result.user.updateProfile({
+          displayName: names
+        })
+        //const avatar= {
+          url:'' de donde obtendremos la imagen
+        }//
+        //enviar email de verificacion
+        result.user.sendEmailVerification() .catch((error) => { y asi vamos a capturar el error
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+      return errorCode + errorMessage;
+    });
+      })
+ 
+      }
+
+      */
   return createUserWithEmailAndPassword;
+    
 };
 // USUARIOS REGISTRADOS
 export const logEmail = (emaiLogin, passwordLogin) => {
@@ -88,6 +115,10 @@ export const logEmail = (emaiLogin, passwordLogin) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
+      //const avatar = url-src-img-pngimagen foto;
+
+
+
 
       window.location.hash = "#/templateHome";
     })
@@ -98,7 +129,20 @@ export const logEmail = (emaiLogin, passwordLogin) => {
     });
 };
 
-// Add a new document with a generated id, post
+// Función para crear la colección user-id
+export const addUserData = async (userId, input) => {
+  try {
+    const docRef = await addDoc(collection(db, 'contenido'), {
+      id: userId,
+      name: input,
+    });
+    console.log('Document written with ID: ', docRef.id);
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
+};
+
+// Add a new document with a generated id, post,crear coleccion de post
 
 export const postear = async (input) => {
   const user = auth.currentUser;
@@ -107,18 +151,39 @@ export const postear = async (input) => {
     description: input,
     correo: user.email,
     foto: user.photoURL,
-    id: "",
+    id:  auth.currentUser.uid,
+    datePost: Timestamp.fromDate(new Date()),
     //id: auth.currentUser.uid,
 
+ /*CONSTRUCCION ELIMINAR POST
+  .then((algo) => {
+      docRef.id.updateProfile;
+    docRef.id.update(id)
+   // return docRef;
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    return errorCode + errorMessage;
+  })*/
+  
   });
 
   console.log("Document written with ID: ", docRef.id);
- 
-  docRef.id.update(id)
- // return docRef;
-};
+
+/*función para publicar nombre de usuarios
+export const getCurrentUserData = (callback) => {
+  const q = query(collection(db, 'user-data'));
+  onSnapshot(q, (querySnapshot) => {
+    const postsName = [];
+    querySnapshot.forEach((doc) => {
+      postsName.push(doc.data());
+    });
+    callback(postsName);
+  });
+};*/
 export const readData = (callback) => {
-  const q = query(collection(db, "contenido"));
+  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
     const posting = [];
     querySnapshot.forEach((doc) => {
@@ -130,12 +195,43 @@ export const readData = (callback) => {
       
     });
     callback(posting);
-  });
+  })
+};
+
+ // función para eliminar post
+export const deleteDoc = async(id) => {
+  const isConfirm = window.confirm('¿Seguro quieres eliminar tu post?');
+if (isConfirm) {
+   
+ await deleteDoc(doc(db, "contendido", id))
+ }
+
+};
+// función para cerrar sesión
+export const out = () => {
+  signOut(auth)
+    .then(() => {
+      window.location.hash = '#/login';
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 
-export const deleteDoc = async(id) => {
-   
- await deleteDoc(doc(db, "contendido", id));
- }
- 
+
+// Para editar Post
+export const editTemplate = async (postId) => {
+  const isConfirm = window.confirm('¿Seguro quieres editar tu post?');
+  if (isConfirm) {
+    const postEdit = doc(db, 'post', postId);
+    await updateDoc(postEdit, {
+      userName: auth.currentUser.displayName,
+      userId: auth.currentUser.uid,
+      idPost: postId,
+      userPost: document.getElementById('textPostInputEdit').value,
+    });
+    window.location.reload();
+  }
+}
+};

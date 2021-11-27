@@ -26,6 +26,6 @@ export const changeRoute = (hash) => {
       break;
 
     default:
-      containerRoot.innerHTML = '<h2 class="default">No Encontrado</h2>';
+      containerRoot.innerHTML = '<h2 class="default">No Encontrado <a href="#/register" id="registerBtn">Regístrate</a> </h2>';
   }
 };
