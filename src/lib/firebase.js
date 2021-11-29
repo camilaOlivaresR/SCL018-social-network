@@ -14,6 +14,8 @@ import {
   addDoc,
   query,
   onSnapshot,
+  deleteDoc,
+  doc,
 } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -28,7 +30,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 const db = getFirestore(app);
 console.log(app);
@@ -103,6 +105,7 @@ export const postear = async (input) => {
     description: input,
     correo: user.email,
     foto: user.photoURL,
+    userId: auth.currentUser.uid,
   });
 
   console.log("Document written with ID: ", docRef.id);
@@ -118,4 +121,10 @@ export const readData = (callback) => {
     });
     callback(cities);
   });
+};
+export const eraseDoc = async (id) => {
+  const confirm = window.confirm('¿Quieres eliminar esta publicación?');
+  if (confirm) {
+    await deleteDoc(doc(db, 'contenido', id));
+  }
 };
