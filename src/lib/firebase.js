@@ -7,6 +7,7 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
 import {
   getFirestore,
@@ -14,10 +15,10 @@ import {
   addDoc,
   query,
   onSnapshot,
-  /*doc,
+  doc,
   deleteDoc,
   Timestamp,
-  orderBy,*/
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -34,7 +35,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-console.log(app);
+
 
 //AUTENTICACION GOOGLE
 export const signInGoogle = () => {
@@ -99,23 +100,23 @@ export const postear = async (input) => {
   const user = auth.currentUser;
   const docRef = await addDoc(collection(db, "contenido"), {
     title: input,
-    description: input,
     correo: user.email,
     foto: user.photoURL,
     id:  auth.currentUser.uid,
-    //datePost: Timestamp.fromDate(new Date()),
+    datePost: Timestamp.fromDate(new Date()),
 });
 }
 //Funcion imprimir data
 export const readData = (callback) => {
-  const q = query(collection(db, "contenido"));
+  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
   onSnapshot(q, (querySnapshot) => {
     const posting = [];
     querySnapshot.forEach((doc) => {
      const element = {};
-      element.id = doc.id;// OH ELY
+     /* element.id = doc.id;// OH ELY
       element.data = doc.data(),
-      posting.push(element);//OH ely
+      posting.push(element);//OH ely*/
+      posting.push(doc.data());
     
 
       
@@ -125,11 +126,20 @@ export const readData = (callback) => {
 };
 
 
-/*
+
 export const eraseDoc = async(id) => {
  
  await deleteDoc(doc(db, "contendido", id))
  }
 
-*/
-
+//cerrar sesion
+ export const logOut = () => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    console.log('cierre de sesión exitoso');
+    window.location.hash = '#/login';
+  }).catch((error) => {
+    console.log(error);
+    // An error happened.
+  });
+}

@@ -1,4 +1,4 @@
-import { postear, readData, /*eraseDoc*/ } from '../lib/firebase.js';
+import { postear, readData, eraseDoc } from '../lib/firebase.js';
 
 export const home = () => {
   const containerHome = document.createElement('section');
@@ -24,35 +24,18 @@ export const home = () => {
   <textarea type="text" placeholder="Publica aquí" id="title" cols="20" rows="10"class="espaciado"></textarea>
   <button class="publicar-btn" id="publish-btn">Publicar</button>
   </section> 
-  <section id = "publicaciones" class="post">
+  <section id="publicaciones" class="post">
   
   </section>
   
-  <!--<main>
-    <div class="container-wall">
-      <img src="img/logo.png" alt="">
-      <textarea name="" id="" cols="30" rows="10"></textarea>
-    
-    <ul style="list-style: none;">
-      <li><img class="iconpost" src="img/10.png" alt="like"></li>
-      <li><img class="iconpost" src="img/11.png" alt="comment"></li>
-      <li><img class="iconpost" src="img/12.png" alt="share"></li>
-      <li><img class="iconpost" src="img/14.png" id="delete-btn" alt="delete"></li>
-      <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-    </ul>
-    </div>
-   
-  </main>
--->
 </div>`;
 
-  containerHome.innerHTML = viewHome;
- 
+containerHome.innerHTML = viewHome;
   const post = (publicaciones) => {
     publicaciones.forEach((element) => {
       containerHome.querySelector('#publicaciones').innerHTML += `
       <div class= "contenedorPost">
-      <p name="publication" class ="publish" >${element.title}</p>
+      <p name="publication" id="${element.id}">${element.title}</p>
       </div>
       <div class="container-wall">
       <ul class ="like-icons" style="list-style: none;">
@@ -60,34 +43,37 @@ export const home = () => {
         <li><img class="iconpost" src="img/11.png" alt="comment"></li>
         <li><img class="iconpost" src="img/12.png" alt="share"></li>
         <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-        <li class="delete-btn" id="delete-${element.id}" ><img class="iconpost" src="img/14.png" alt="delete" ></li>
+        <li><img class="delete-btn iconpost" id="${element.id}" src="img/14.png" alt="delete"></li>
         </ul>
       </div>`;
-      /* const erase = publicaciones.querySelectorAll('.delete-btn');
-  console.log(erase);
-  erase.forEach((btn) => {
-     console.log(btn);
-     btn.addEventListener('click', (e) =>{
-       // if(confirm('¿Estas seguro de eliminar tu post? ')) 
-       eraseDoc(id);
-   
-   })
- 
- })*/
-    });
-   
+     
 
-  readData(post); // callback
-  const titulo = containerHome.querySelector('#publish-btn');
-  titulo.addEventListener('click', () => {
-    const input = containerHome.querySelector('#title').value;
-    const input2 = containerHome.querySelector('.publish').value;
-    console.log(input, input2);
-    postear(input);
+    });
+  }
+  
+
+
+    readData(post); // callback
+    const titulo = containerHome.querySelector('#publish-btn');
+    titulo.addEventListener('click', () => {
+      const input = containerHome.querySelector('#title').value;
+      const input2 = containerHome.querySelector('#publish-btn').value;
+      console.log(input, input2);
+      postear(input);
+    });
+
+
+ 
+  const erase = containerHome.querySelectorAll('.delete-btn');
+  erase.forEach((btn) => {
+    console.log(btn);
+    btn.addEventListener('click', (e) => {
+      // if(confirm('¿Estas seguro de eliminar tu post? ')) 
+      eraseDoc(id);
+
+    })
+
   });
-  
-  
-};
 
 
 
