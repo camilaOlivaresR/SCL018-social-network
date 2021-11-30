@@ -1,9 +1,11 @@
+
 import {
   postear,
   readData,
   auth,
   eraseDoc,
 } from '../lib/firebase.js';
+
 export const home = () => {
   const containerHome = document.createElement('section');
   const viewHome = `
@@ -26,18 +28,25 @@ export const home = () => {
   <textarea type="text" placeholder="Publica aquí" id="title" cols="20" rows="10"class="espaciado"></textarea>
   <button class="publicar-btn" id="publish-btn">Publicar</button>
   </section> 
-  <section id = "publicaciones" class="post">
+
+  <section id="publicaciones" class="post">
+  
   </section>
+  
 </div>`;
+
+containerHome.innerHTML = viewHome;
+
 
 const publi = document.createElement("section");
   containerHome.innerHTML = viewHome;
+
   const post = (publicaciones) => {
     console.log(publicaciones);
     publicaciones.forEach((element) => { 
       containerHome.querySelector('#publicaciones').innerHTML += `
       <div class= "contenedorPost">
-      <p name="publication" id="publish">${element.title}</p>
+      <p name="publication" id="${element.id}">${element.title}</p>
       </div>
       <div class="container-wall">
       <ul class ="like-icons" style="list-style: none;">
@@ -45,28 +54,29 @@ const publi = document.createElement("section");
         <li><img class="iconpost" src="img/11.png" alt="comment"></li>
         <li><img class="iconpost" src="img/12.png" alt="share"></li>
         <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-        ${ (element.userId === auth.currentUser.uid)?
+      ${ (element.userId === auth.currentUser.uid)?
           ` <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" value ="${element.id}"></li>
           `:""
         }
-      </ul>
       </div>`;
+     
 
-      /*if (element.userId === auth.currentUser.uid) {
-        containerHome.querySelector("#publicaciones").innerHTML += `
-        <li><img class="iconpost" src="img/14.png" alt="delete" class= "delete-btn" value ="${element.id}"></li>
-        `;
-      }*/
     });
-  };
+  }
+  
 
-  readData(post); // callback
-  const titulo = containerHome.querySelector('#publish-btn');
-  titulo.addEventListener('click', () => {
-    const input = containerHome.querySelector('#title').value;
-    const input2 = containerHome.querySelector('#publish').value;
-    postear(input);
-  });
+
+    readData(post); // callback
+    const titulo = containerHome.querySelector('#publish-btn');
+    titulo.addEventListener('click', () => {
+      const input = containerHome.querySelector('#title').value;
+      const input2 = containerHome.querySelector('#publish-btn').value;
+      console.log(input, input2);
+      postear(input);
+
+     
+    });
+
 
   const botonDelete = containerHome.querySelector('.delete-btn');
   botonDelete?.forEach((btn) => {
@@ -78,3 +88,4 @@ const publi = document.createElement("section");
   });
   return containerHome;
 };
+
