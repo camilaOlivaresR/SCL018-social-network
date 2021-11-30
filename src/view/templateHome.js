@@ -1,4 +1,4 @@
-import { postear, readData, /*deleteDoc*/  } from '../lib/firebase.js';
+import { postear, readData, /*eraseDoc*/ } from '../lib/firebase.js';
 
 export const home = () => {
   const containerHome = document.createElement('section');
@@ -43,15 +43,16 @@ export const home = () => {
     </div>
    
   </main>
-
+-->
 </div>`;
 
   containerHome.innerHTML = viewHome;
+ 
   const post = (publicaciones) => {
     publicaciones.forEach((element) => {
       containerHome.querySelector('#publicaciones').innerHTML += `
       <div class= "contenedorPost">
-      <p name="publication" class ="publish" id="${element.id}">${element.title}</p>
+      <p name="publication" class ="publish" >${element.title}</p>
       </div>
       <div class="container-wall">
       <ul class ="like-icons" style="list-style: none;">
@@ -59,11 +60,22 @@ export const home = () => {
         <li><img class="iconpost" src="img/11.png" alt="comment"></li>
         <li><img class="iconpost" src="img/12.png" alt="share"></li>
         <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-        <li><img class="iconpost" src="img/14.png" alt="delete"></li>
-      </ul>
+        <li class="delete-btn" id="delete-${element.id}" ><img class="iconpost" src="img/14.png" alt="delete" ></li>
+        </ul>
       </div>`;
+      /* const erase = publicaciones.querySelectorAll('.delete-btn');
+  console.log(erase);
+  erase.forEach((btn) => {
+     console.log(btn);
+     btn.addEventListener('click', (e) =>{
+       // if(confirm('¿Estas seguro de eliminar tu post? ')) 
+       eraseDoc(id);
+   
+   })
+ 
+ })*/
     });
-  };
+   
 
   readData(post); // callback
   const titulo = containerHome.querySelector('#publish-btn');
@@ -73,15 +85,11 @@ export const home = () => {
     console.log(input, input2);
     postear(input);
   });
+  
+  
+};
 
- /* const erase = containerHome.querySelector('#delet-btn');
-  deleteBtn.forEach((btn) => {
-    erase.addEventListener('click', (e) =>{
-      // if(confirm('¿Estas seguro de eliminar tu post? '))
-      deleteDoc(id);
-  })
 
-})*/
 
 
   return containerHome;

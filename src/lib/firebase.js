@@ -14,10 +14,11 @@ import {
   addDoc,
   query,
   onSnapshot,
+  /*doc,
+  deleteDoc,
+  Timestamp,
+  orderBy,*/
 } from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
-
-//import { doc, deleteDoc } from "firebase/firestore";Borrar post
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk",
@@ -32,10 +33,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
 const db = getFirestore(app);
 console.log(app);
 
+//AUTENTICACION GOOGLE
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider(app);
   signInWithPopup(auth, provider)
@@ -45,11 +46,9 @@ export const signInGoogle = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-
       window.location.hash = "#/templateHome";
       return user;
-      // ...
-    })
+       })
     .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -62,25 +61,22 @@ export const signInGoogle = () => {
 };
 // REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
 
-export const newEmail = (email, newpassword, names) => {
+export const newEmail = (email, newpassword) => {
   // retornar esta funcion, hacer cambio de hash
   createUserWithEmailAndPassword(auth, email, newpassword)
   //esto me regresa una promesa, then= resultado de una promesa
     .then((userCredential) => {
       // Signed in/ result de la promesa 
       const user = userCredential.user;
-     
+       //consultar o actualizar la data basica del usuario como url de la foto
       window.location.hash = "#/login";
-
-      return user;
+       return user;
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
-      return errorCode + errorMessage;
     });
-  return createUserWithEmailAndPassword;
+        
 };
 // USUARIOS REGISTRADOS
 export const logEmail = (emaiLogin, passwordLogin) => {
@@ -88,8 +84,8 @@ export const logEmail = (emaiLogin, passwordLogin) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-
-      window.location.hash = "#/templateHome";
+      //const avatar = url-src-img-pngimagen foto;
+       window.location.hash = "#/templateHome";
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -98,8 +94,7 @@ export const logEmail = (emaiLogin, passwordLogin) => {
     });
 };
 
-// Add a new document with a generated id, post
-
+// Add a new document with a generated id, post,crear coleccion de post
 export const postear = async (input) => {
   const user = auth.currentUser;
   const docRef = await addDoc(collection(db, "contenido"), {
@@ -107,35 +102,34 @@ export const postear = async (input) => {
     description: input,
     correo: user.email,
     foto: user.photoURL,
-    id: "",
-    //id: auth.currentUser.uid,
-
-  });
-
-  console.log("Document written with ID: ", docRef.id);
- 
-  docRef.id.update(id)
- // return docRef;
-};
+    id:  auth.currentUser.uid,
+    //datePost: Timestamp.fromDate(new Date()),
+});
+}
+//Funcion imprimir data
 export const readData = (callback) => {
   const q = query(collection(db, "contenido"));
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  onSnapshot(q, (querySnapshot) => {
     const posting = [];
     querySnapshot.forEach((doc) => {
-     /* const element = {};
-      element.id = doc.id;
-      element.data = doc.data(),*/
-      posting.push(doc.data());
+     const element = {};
+      element.id = doc.id;// OH ELY
+      element.data = doc.data(),
+      posting.push(element);//OH ely
+    
 
       
     });
     callback(posting);
-  });
+  })
 };
 
 
-export const deleteDoc = async(id) => {
-   
- await deleteDoc(doc(db, "contendido", id));
- }
+/*
+export const eraseDoc = async(id) => {
  
+ await deleteDoc(doc(db, "contendido", id))
+ }
+
+*/
+
