@@ -1,9 +1,14 @@
-import { postear, readData, eraseDoc } from '../lib/firebase.js';
+
+import {
+  postear,
+  readData,
+  auth,
+  eraseDoc,
+} from '../lib/firebase.js';
 
 export const home = () => {
   const containerHome = document.createElement('section');
   const viewHome = `
-    
     <div class="container-home">
     <nav>
       <ul  style="list-style: none;" class="container-nav">
@@ -16,7 +21,6 @@ export const home = () => {
         <li><img class="icons" src="img/9.png" alt="events"></li>
         <li><img class="icons" src="img/7.png" alt="notifications"></li>
         <a href="#/profile"><img class="icons" id="profile" src="img/menu.png" alt="menu"></a>
- 
         </div>
       </ul>
   </nav>
@@ -24,6 +28,7 @@ export const home = () => {
   <textarea type="text" placeholder="Publica aquí" id="title" cols="20" rows="10"class="espaciado"></textarea>
   <button class="publicar-btn" id="publish-btn">Publicar</button>
   </section> 
+
   <section id="publicaciones" class="post">
   
   </section>
@@ -31,8 +36,14 @@ export const home = () => {
 </div>`;
 
 containerHome.innerHTML = viewHome;
+
+
+const publi = document.createElement("section");
+  containerHome.innerHTML = viewHome;
+
   const post = (publicaciones) => {
-    publicaciones.forEach((element) => {
+    console.log(publicaciones);
+    publicaciones.forEach((element) => { 
       containerHome.querySelector('#publicaciones').innerHTML += `
       <div class= "contenedorPost">
       <p name="publication" id="${element.id}">${element.title}</p>
@@ -43,8 +54,10 @@ containerHome.innerHTML = viewHome;
         <li><img class="iconpost" src="img/11.png" alt="comment"></li>
         <li><img class="iconpost" src="img/12.png" alt="share"></li>
         <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-        <li><img class="delete-btn iconpost" id="${element.id}" src="img/14.png" alt="delete"></li>
-        </ul>
+      ${ (element.userId === auth.currentUser.uid)?
+          ` <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" value ="${element.id}"></li>
+          `:""
+        }
       </div>`;
      
 
@@ -60,25 +73,19 @@ containerHome.innerHTML = viewHome;
       const input2 = containerHome.querySelector('#publish-btn').value;
       console.log(input, input2);
       postear(input);
+
+     
     });
 
 
- 
-  const erase = containerHome.querySelectorAll('.delete-btn');
-  erase.forEach((btn) => {
-    console.log(btn);
-    btn.addEventListener('click', (e) => {
-      // if(confirm('¿Estas seguro de eliminar tu post? ')) 
+  const botonDelete = containerHome.querySelector('.delete-btn');
+  botonDelete?.forEach((btn) => {
+    console.log(btn)
+    const id = btn.value
+    btn.addEventListener('click', () => {
       eraseDoc(id);
-
     })
-
   });
-
-
-
-
   return containerHome;
 };
-
 
