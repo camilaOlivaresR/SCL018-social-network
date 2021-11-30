@@ -7,6 +7,7 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
 import {
   getFirestore,
@@ -14,8 +15,10 @@ import {
   addDoc,
   query,
   onSnapshot,
-  deleteDoc,
-  doc,
+   deleteDoc,
+   doc,
+   Timestamp,
+   orderBy,
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -106,18 +109,19 @@ export const postear = async (input) => {
     correo: user.email,
     foto: user.photoURL,
     userId: auth.currentUser.uid,
+   datePosted: Timestamp.fromDate(new Date()),
+
   });
 
   console.log('Document written with ID: ', docRef.id);
   return docRef;
 };
 export const readData = (callback) => {
-  const q = query(collection(db, 'contenido'));
+  const q = query(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
     const cities = [];
     querySnapshot.forEach((doc) => {
       cities.push(doc.data());
-      console.log(doc.data());
     });
     callback(cities);
   });
@@ -127,4 +131,16 @@ export const eraseDoc = async (id) => {
   if (confirm) {
     await deleteDoc(doc(db, 'contenido', id));
   }
+};
+
+// observador
+export const observador = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.iud;
+    } else {
+      alert('Regístrate para ingresar');
+      window.location.hash = '#/register';
+    }
+  });
 };
