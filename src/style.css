@@ -23,6 +23,7 @@ body {
   margin-top: 1em;
   width: 17em;
   height: 3em;
+  outline: none;
 }
 .name {
   padding: 1em;
@@ -31,6 +32,9 @@ body {
   outline: none;
 }
 .name:hover {
+  border: 2px solid yellowgreen;
+}
+.password:hover {
   border: 2px solid yellowgreen;
 }
 
@@ -44,10 +48,12 @@ body {
   width: 17em;
   background-color: yellowgreen;
   outline: none;
+  color:white;
 }
 
 .btn-ing:hover {
-  background-color: #0afa12;
+  background-color: rgb(165, 197, 101);
+  color:white;
 }
 
 .btn-ing,
@@ -56,7 +62,7 @@ body {
 }
 
 p {
-  padding: 1.5em;
+  padding: 2em;
   color: white;
 }
 h1 {
@@ -64,6 +70,11 @@ h1 {
   color: white;
 }
 a {
+  color: white;
+  text-decoration: none;
+
+}
+#registerBtn{
   color: yellowgreen;
 }
 .container {
@@ -182,4 +193,37 @@ a {
 .iconpost{
   width: 50px;
   height: 50px;
+}
+.container-web{
+  display: none;
+}
+@media (min-width: 768px){
+  .container-web{
+    display: block; 
+  }
+  .imgMujeres{
+    width: 25rem;
+    height: 100%;
+  }
+  .container-all{
+   display: flex;
+   flex-direction: row;
+   justify-content: wrap;
+  }
+  .container{
+    align-items: center;
+    padding-left: 50px;
+  }
+  
+}
+@media (min-width: 992px){
+  .imgMujeres{
+    width: 35rem;
+  }
+
+}
+@media (min-width: 1200px) {
+  .imgMujeres{
+    width: 55rem;
+  }
 }
