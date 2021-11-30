@@ -24,28 +24,10 @@ export const home = () => {
   <textarea type="text" placeholder="Publica aquí" id="title" cols="20" rows="10"class="espaciado"></textarea>
   <button class="publicar-btn" id="publish-btn">Publicar</button>
   </section> 
-  <section id = "publicaciones" class="post">
   
-  </section>
-  
-  <!--<main>
-    <div class="container-wall">
-      <img src="img/logo.png" alt="">
-      <textarea name="" id="" cols="30" rows="10"></textarea>
-    
-    <ul style="list-style: none;">
-      <li><img class="iconpost" src="img/10.png" alt="like"></li>
-      <li><img class="iconpost" src="img/11.png" alt="comment"></li>
-      <li><img class="iconpost" src="img/12.png" alt="share"></li>
-      <li><img class="iconpost" src="img/14.png" alt="delete"></li>
-      <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-    </ul>
-    </div>
-   
-  </main>
-  -->
 </div>`;
 
+const publi = document.createElement("section");
   containerHome.innerHTML = viewHome;
   const post = (publicaciones) => {
     publicaciones.forEach((element) => {
@@ -62,11 +44,11 @@ export const home = () => {
         <li><img class="iconpost" src="img/14.png" alt="delete" value ="${element.id}"></li>
       </ul>
       </div>`;
-      if (element.userId === auth.currentUser.uid) {
+      /*if (element.userId === auth.currentUser.uid) {
         containerHome.querySelector("#publicaciones").innerHTML += `
         <li><img class="iconpost" src="img/14.png" alt="delete" class= "delete-btn" value ="${element.id}"></li>
         `;
-      }
+      }*/
     });
   };
 
@@ -78,8 +60,8 @@ export const home = () => {
     console.log(input, input2);
     postear(input);
   });
-  const botonDelete = containerHome.querySelector(".delete-btn");
-  /*botonDelete.forEach((btn){
+  /*const botonDelete = publicaciones.querySelector(".delete-btn");
+  botonDelete.forEach((btn){
     const id = btn.value
     btn.addEventListener('click', ()=>{
       eraseDoc(id);
