@@ -10,6 +10,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
 import {
   getFirestore,
@@ -145,3 +146,15 @@ export const observador = () => {
     }
   });
 };
+//cerrar sesion
+export const logOut = () => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    console.log('cierre de sesión');
+    window.location.hash = '#/login';
+  }).catch((error) => {
+    console.log(error);
+    // An error happened.
+  });
+}
+

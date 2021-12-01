@@ -1,3 +1,4 @@
+import{ logOut } from '../lib/firebase.js';
 export const profile = () => {
   const containerProfile = document.createElement('section');
   const viewProfile = `
@@ -20,5 +21,12 @@ export const profile = () => {
 
 
   containerProfile.innerHTML = viewProfile;
+  //cerrar sesion
+  const out =containerProfile.querySelector('#btn-out')
+  out.addEventListener('click', () => {
+   logOut();
+   window.location.hash ='#/login';
+ });
+
   return containerProfile;
 };
