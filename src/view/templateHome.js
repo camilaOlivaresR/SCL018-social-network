@@ -4,11 +4,9 @@ import {
   auth,
   eraseDoc,
 } from '../lib/firebase.js';
-
 export const home = () => {
   const containerHome = document.createElement('section');
   const viewHome = `
-    
     <div class="container-home">
     <nav>
       <ul  style="list-style: none;" class="container-nav">
@@ -21,7 +19,6 @@ export const home = () => {
         <li><img class="icons" src="img/9.png" alt="events"></li>
         <li><img class="icons" src="img/7.png" alt="notifications"></li>
         <a href="#/profile"><img class="icons" id="profile" src="img/menu.png" alt="menu"></a>
- 
         </div>
       </ul>
   </nav>
@@ -31,9 +28,9 @@ export const home = () => {
   </section> 
   <section id = "publicaciones" class="post">
   </section>
-  
 </div>`;
 
+const publi = document.createElement("section");
   containerHome.innerHTML = viewHome;
   const post = (publicaciones) => {
     console.log(publicaciones);
@@ -54,6 +51,7 @@ export const home = () => {
 }
       </ul>
       </div>`;
+<<<<<<< HEAD
     });
     console.log(containerHome);
     const titulo = containerHome.querySelector('#publish-btn');
@@ -74,5 +72,32 @@ export const home = () => {
     });
   };
   readData().then((value) => post(value)).catch((error) => console.error(error));
+=======
+
+      /*if (element.userId === auth.currentUser.uid) {
+        containerHome.querySelector("#publicaciones").innerHTML += `
+        <li><img class="iconpost" src="img/14.png" alt="delete" class= "delete-btn" value ="${element.id}"></li>
+        `;
+      }*/
+    });
+  };
+
+  readData(post); // callback
+  const titulo = containerHome.querySelector('#publish-btn');
+  titulo.addEventListener('click', () => {
+    const input = containerHome.querySelector('#title').value;
+    const input2 = containerHome.querySelector('#publish').value;
+    postear(input);
+  });
+
+  const botonDelete = containerHome.querySelector('.delete-btn');
+  botonDelete?.forEach((btn) => {
+    console.log(btn)
+    const id = btn.value
+    btn.addEventListener('click', () => {
+      eraseDoc(id);
+    })
+  });
+>>>>>>> 48d666dd39be7f97ff502ebc2928c93fe4c5673d
   return containerHome;
 };
