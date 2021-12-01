@@ -123,7 +123,8 @@ export const readData = (callback) => {
 
   console.log('Document written with ID: ', docRef.id);
   return docRef;
-};
+},
+  )
 export const readData = (callback) => {
   const q = query(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -165,5 +166,6 @@ export const observador = () => {
       window.location.hash = '#/register';
     }
   });
-};
+}
+}
 
