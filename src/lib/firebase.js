@@ -1,28 +1,29 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-unresolved */
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js';
+import {
+  initializeApp,
+} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js';
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
- onAuthStateChanged,
+  onAuthStateChanged,
   signOut,
-} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js";
-
+} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
 import {
   getFirestore,
   collection,
   addDoc,
   query,
   onSnapshot,
-  doc,
   deleteDoc,
+  doc,
   Timestamp,
   orderBy,
-} from "https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js";
-
+  getDocs,
+} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk',
@@ -64,7 +65,6 @@ export const signInGoogle = () => {
     });
 };
 // REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
-
 export const newEmail = (email, newpassword) => {
   // retornar esta funcion, hacer cambio de hash
   createUserWithEmailAndPassword(auth, email, newpassword)
@@ -104,36 +104,21 @@ export const postear = async (input) => {
     title: input,
     correo: user.email,
     foto: user.photoURL,
-    id:  auth.currentUser.uid,
-    datePost: Timestamp.fromDate(new Date()),
-});
-}
-//Funcion imprimir data
-export const readData = (callback) => {
-  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
-  onSnapshot(q, (querySnapshot) => {
-    const posting = [];
-    querySnapshot.forEach((doc) => {
-     const element = {};
-     /* element.id = doc.id;// OH ELY
-      element.data = doc.data(),
-      posting.push(element);//OH ely*/
-      posting.push(doc.data());
-  });
+    userId: auth.currentUser.uid,
+    datePosted: Timestamp.fromDate(new Date()),
 
-  console.log('Document written with ID: ', docRef.id);
-  return docRef;
-},
-  )
-export const readData = (callback) => {
-  const q = query(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    const cities = [];
-    querySnapshot.forEach((doc) => {
-      cities.push(doc.data());
+  });
+};
+export const readData = async () => {
+  const q = await getDocs(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
+  const posts = [];
+  q.forEach((element) => {
+    posts.push({
+      id: element.id,
+      ...element.data(),
     });
-    callback(posting);
-  })
+  });
+  return posts;
 };
 
 
@@ -150,6 +135,7 @@ export const readData = (callback) => {
 }
 
 export const eraseDoc = async (id) => {
+  console.log(id);
   const confirm = window.confirm('¿Quieres eliminar esta publicación?');
   if (confirm) {
     await deleteDoc(doc(db, 'contenido', id));
@@ -166,6 +152,15 @@ export const observador = () => {
       window.location.hash = '#/register';
     }
   });
-}
-}
-
+};
+// cerrar sesion
+export const logOut = () => {
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    console.log('cierre de sesión');
+    window.location.hash = '#/login';
+  }).catch((error) => {
+    console.log(error);
+    // An error happened.
+  });
+};
