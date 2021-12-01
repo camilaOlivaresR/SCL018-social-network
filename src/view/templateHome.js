@@ -30,8 +30,6 @@ export const home = () => {
   <section id = "publicaciones" class="post">
   </section>
 </div>`;
-
-  const publi = document.createElement('section');
   containerHome.innerHTML = viewHome;
   const post = (publicaciones) => {
     console.log(publicaciones);

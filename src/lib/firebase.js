@@ -117,7 +117,7 @@ export const postear = async (input) => {
   });
 };
 export const readData = async () => {
-  const q = await getDocs(collection(db, 'contenido'));
+  const q = await getDocs(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
   const posts = [];
   q.forEach((element) => {
     posts.push({
