@@ -146,7 +146,7 @@ export const observador = () => {
     }
   });
 };
-//cerrar sesion
+// cerrar sesion
 export const logOut = () => {
   signOut(auth).then(() => {
     // Sign-out successful.
@@ -156,5 +156,4 @@ export const logOut = () => {
     console.log(error);
     // An error happened.
   });
-}
-
+};

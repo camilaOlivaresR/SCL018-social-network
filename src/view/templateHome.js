@@ -4,6 +4,7 @@ import {
   auth,
   eraseDoc,
 } from '../lib/firebase.js';
+
 export const home = () => {
   const containerHome = document.createElement('section');
   const viewHome = `
@@ -30,7 +31,7 @@ export const home = () => {
   </section>
 </div>`;
 
-const publi = document.createElement("section");
+  const publi = document.createElement('section');
   containerHome.innerHTML = viewHome;
   const post = (publicaciones) => {
     console.log(publicaciones);
@@ -51,7 +52,6 @@ const publi = document.createElement("section");
 }
       </ul>
       </div>`;
-<<<<<<< HEAD
     });
     console.log(containerHome);
     const titulo = containerHome.querySelector('#publish-btn');
@@ -72,32 +72,5 @@ const publi = document.createElement("section");
     });
   };
   readData().then((value) => post(value)).catch((error) => console.error(error));
-=======
-
-      /*if (element.userId === auth.currentUser.uid) {
-        containerHome.querySelector("#publicaciones").innerHTML += `
-        <li><img class="iconpost" src="img/14.png" alt="delete" class= "delete-btn" value ="${element.id}"></li>
-        `;
-      }*/
-    });
-  };
-
-  readData(post); // callback
-  const titulo = containerHome.querySelector('#publish-btn');
-  titulo.addEventListener('click', () => {
-    const input = containerHome.querySelector('#title').value;
-    const input2 = containerHome.querySelector('#publish').value;
-    postear(input);
-  });
-
-  const botonDelete = containerHome.querySelector('.delete-btn');
-  botonDelete?.forEach((btn) => {
-    console.log(btn)
-    const id = btn.value
-    btn.addEventListener('click', () => {
-      eraseDoc(id);
-    })
-  });
->>>>>>> 48d666dd39be7f97ff502ebc2928c93fe4c5673d
   return containerHome;
 };
