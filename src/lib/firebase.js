@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-unresolved */
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js';
+import {
+  initializeApp,
+} from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -15,10 +17,11 @@ import {
   addDoc,
   query,
   onSnapshot,
-   deleteDoc,
-   doc,
-   Timestamp,
-   orderBy,
+  deleteDoc,
+  doc,
+  Timestamp,
+  orderBy,
+  getDocs,
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -63,7 +66,6 @@ export const signInGoogle = () => {
     });
 };
 // REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
-
 export const newEmail = (email, newpassword) => {
   // retornar esta funcion, hacer cambio de hash
   createUserWithEmailAndPassword(auth, email, newpassword)
@@ -109,24 +111,23 @@ export const postear = async (input) => {
     correo: user.email,
     foto: user.photoURL,
     userId: auth.currentUser.uid,
-   datePosted: Timestamp.fromDate(new Date()),
+    datePosted: Timestamp.fromDate(new Date()),
 
   });
-
-  console.log('Document written with ID: ', docRef.id);
-  return docRef;
 };
-export const readData = (callback) => {
-  const q = query(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    const cities = [];
-    querySnapshot.forEach((doc) => {
-      cities.push(doc.data());
+export const readData = async () => {
+  const q = await getDocs(collection(db, 'contenido'));
+  const posts = [];
+  q.forEach((element) => {
+    posts.push({
+      id: element.id,
+      ...element.data(),
     });
-    callback(cities);
   });
+  return posts;
 };
 export const eraseDoc = async (id) => {
+  console.log(id);
   const confirm = window.confirm('¿Quieres eliminar esta publicación?');
   if (confirm) {
     await deleteDoc(doc(db, 'contenido', id));
