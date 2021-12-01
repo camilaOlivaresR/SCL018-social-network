@@ -136,7 +136,7 @@ export const eraseDoc = async(id) => {
  export const logOut = () => {
   signOut(auth).then(() => {
     // Sign-out successful.
-    console.log('cierre de sesión exitoso');
+    console.log('cierre de sesión');
     window.location.hash = '#/login';
   }).catch((error) => {
     console.log(error);
