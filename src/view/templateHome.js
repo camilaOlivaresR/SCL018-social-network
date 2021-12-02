@@ -1,12 +1,7 @@
-import {
-  postear,
-  readData,
-  auth,
-  eraseDoc,
-} from '../lib/firebase.js';
+import { postear, readData, auth, eraseDoc } from "../lib/firebase.js";
 
 export const home = () => {
-  const containerHome = document.createElement('section');
+  const containerHome = document.createElement("section");
   const viewHome = `
     <div class="container-home">
     <nav>
@@ -34,7 +29,7 @@ export const home = () => {
   const post = (publicaciones) => {
     console.log(publicaciones);
     publicaciones.forEach((element) => {
-      containerHome.querySelector('#publicaciones').innerHTML += `
+      containerHome.querySelector("#publicaciones").innerHTML += `
       <div class= "contenedorPost">
       <p name="publication" id="publish">${element.title}</p>
       </div>
@@ -44,31 +39,35 @@ export const home = () => {
         <li><img class="iconpost" src="img/11.png" alt="comment"></li>
         <li><img class="iconpost" src="img/12.png" alt="share"></li>
         <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-        ${(element.userId === auth.currentUser.uid)
-    ? ` <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}"></li>
-          ` : ''
-}
+        ${
+          element.userId === auth.currentUser.uid
+            ? ` <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}"></li>
+          `
+            : ""
+        }
       </ul>
       </div>`;
     });
     console.log(containerHome);
-    const titulo = containerHome.querySelector('#publish-btn');
-    titulo.addEventListener('click', () => {
-      const input = containerHome.querySelector('#title').value;
-      const input2 = containerHome.querySelector('#publish').value;
+    const titulo = containerHome.querySelector("#publish-btn");
+    titulo.addEventListener("click", () => {
+      const input = containerHome.querySelector("#title").value;
+      const input2 = containerHome.querySelector("#publish").value;
       postear(input);
     });
-    const botonDelete = containerHome.querySelectorAll('.delete-btn');
+    const botonDelete = containerHome.querySelectorAll(".delete-btn");
     console.log(botonDelete);
     botonDelete.forEach((btn) => {
       console.log(btn);
-      const id = btn.getAttribute('id');
+      const id = btn.getAttribute("id");
       console.log(id);
-      btn.addEventListener('click', () => {
+      btn.addEventListener("click", () => {
         eraseDoc(id);
       });
     });
   };
-  readData().then((value) => post(value)).catch((error) => console.error(error));
+  readData()
+    .then((value) => post(value))
+    .catch((error) => console.error(error));
   return containerHome;
 };
