@@ -1,4 +1,4 @@
-import { newEmail } from '../lib/firebase.js';
+import { newEmail, observador } from '../lib/firebase.js';
 
 export const register = () => {
   const formRegister = document.createElement('section');
