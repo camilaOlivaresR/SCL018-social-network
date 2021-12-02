@@ -1,5 +1,12 @@
+
 import {
-  postear, readData, auth, eraseDoc,
+
+  postear,
+  readData,
+  auth,
+  eraseDoc,
+  
+
 } from '../lib/firebase.js';
 
 export const home = () => {
@@ -24,16 +31,24 @@ export const home = () => {
   <textarea type="text" placeholder="Publica aquí" id="title" cols="20" rows="10"class="espaciado"></textarea>
   <button class="publicar-btn" id="publish-btn">Publicar</button>
   </section> 
-  <section id = "publicaciones" class="post">
+
+  <section id="publicaciones" class="post">
+  
   </section>
+  
 </div>`;
   containerHome.innerHTML = viewHome;
+
   const post = (publicaciones) => {
     console.log(publicaciones);
     publicaciones.forEach((element) => {
       containerHome.querySelector('#publicaciones').innerHTML += `
-      <div class= "contenedorPost">
+      <h1 class="user-name">${element.username}</h1>
+      <div class= "contenedorPost"
+     
       <p name="publication" id="publish">${element.title}</p>
+    
+
       </div>
       <div class="container-wall">
       <ul class ="like-icons" style="list-style: none;">

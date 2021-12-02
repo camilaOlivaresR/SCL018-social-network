@@ -39,6 +39,7 @@ export const auth = getAuth(app);
 const db = getFirestore(app);
 
 // AUTENTICACION GOOGLE
+
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider(app);
   signInWithPopup(auth, provider)
@@ -48,9 +49,11 @@ export const signInGoogle = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+
       window.location.hash = '#/templateHome';
       return user;
     })
+
     .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -64,10 +67,12 @@ export const signInGoogle = () => {
 // REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
 export const newEmail = (email, newpassword) => {
   createUserWithEmailAndPassword(auth, email, newpassword)
+  //esto me regresa una promesa, then= resultado de una promesa
     .then((userCredential) => {
       const user = userCredential.user;
       window.location.hash = '#/login';
       return user;
+
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -80,7 +85,9 @@ export const logEmail = (emaiLogin, passwordLogin) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      window.location.hash = '#/templateHome';
+
+    window.location.hash = '#/templateHome';
+
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -93,24 +100,26 @@ export const logEmail = (emaiLogin, passwordLogin) => {
 export const postear = async (input) => {
   const user = auth.currentUser;
   const docRef = await addDoc(collection(db, 'contenido'), {
+    username: auth.currentUser.displayName,
     title: input,
     correo: user.email,
     foto: user.photoURL,
     id: auth.currentUser.uid,
     datePost: Timestamp.fromDate(new Date()),
   });
+  return docRef;
 };
-// Funcion leer data
 
-export const readData = (callback) => {
-  const q = query(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    const cities = [];
-    querySnapshot.forEach((doc) => {
-      cities.push(doc.data());
+export const readData = async () => {
+  const q = await getDocs(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
+  const posts = [];
+  q.forEach((element) => {
+    posts.push({
+      id: element.id,
+      ...element.data(),
     });
-    callback(cities);
   });
+  return posts;
 };
 
 // cerrar sesion
@@ -127,6 +136,7 @@ export const logOut = () => {
       // An error happened.
     });
 };
+
 
 export const eraseDoc = async (id) => {
   const confirm = window.confirm('¿Quieres eliminar esta publicación?');
