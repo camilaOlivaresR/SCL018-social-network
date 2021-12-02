@@ -32,10 +32,13 @@ export const home = () => {
 </div>`;
   containerHome.innerHTML = viewHome;
   const post = (publicaciones) => {
-    console.log(publicaciones);
     publicaciones.forEach((element) => {
       containerHome.querySelector('#publicaciones').innerHTML += `
       <div class= "contenedorPost">
+      <div class= "user-picture">
+      <img class= "avatar" src="img/avatar.jpg" alt="avatar">  
+      <h1 class="user-name">${element.username}</h1> 
+      </div>
       <p name="publication" id="publish">${element.title}</p>
       </div>
       <div class="container-wall">

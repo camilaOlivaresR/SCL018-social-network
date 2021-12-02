@@ -113,8 +113,9 @@ export const postear = async (input) => {
     foto: user.photoURL,
     userId: auth.currentUser.uid,
     datePosted: Timestamp.fromDate(new Date()),
-
+    username: auth.currentUser.displayName,
   });
+  return docRef;
 };
 export const readData = async () => {
   const q = await getDocs(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
