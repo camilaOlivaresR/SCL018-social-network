@@ -228,3 +228,18 @@ a {
   }
 }
 
+.user-name{
+  color: #F88207;
+}
+
+.avatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.user-picture{
+  display: flex;
+  flex-direction: row;
+}
+

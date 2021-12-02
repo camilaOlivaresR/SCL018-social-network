@@ -100,12 +100,12 @@ export const logEmail = (emaiLogin, passwordLogin) => {
 export const postear = async (input) => {
   const user = auth.currentUser;
   const docRef = await addDoc(collection(db, 'contenido'), {
-    username: auth.currentUser.displayName,
     title: input,
     correo: user.email,
     foto: user.photoURL,
-    id: auth.currentUser.uid,
-    datePost: Timestamp.fromDate(new Date()),
+    userId: auth.currentUser.uid,
+    datePosted: Timestamp.fromDate(new Date()),
+    username: auth.currentUser.displayName,
   });
   return docRef;
 };
