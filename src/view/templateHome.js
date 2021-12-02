@@ -43,8 +43,10 @@ export const home = () => {
       containerHome.querySelector('#publicaciones').innerHTML += `
       <div class= "contenedorPost">
       <h1 class="user-name">${element.username}</h1>
+      <div class="post" id="${element.id}">
       <p name="publication" id="publish">${element.title}</p>
       </div>
+      </div>n
       <div class="container-wall">
       <ul class ="like-icons" style="list-style: none;">
         <li><img class="iconpost" src="img/10.png" alt="like"></li>
@@ -57,14 +59,19 @@ export const home = () => {
 }
       </ul>
       </div>`;
+
+      readData(post); // callback
+      const titulo = containerHome.querySelector('#publish-btn');
+      titulo.addEventListener('click', () => {
+        const input = containerHome.querySelector('#title').value;
+        const input2 = containerHome.querySelector('#publish').value;
+        console.log(input, input2);
+        postear(input);
+      });
     });
-    console.log(containerHome);
-    const titulo = containerHome.querySelector('#publish-btn');
-    titulo.addEventListener('click', () => {
-      const input = containerHome.querySelector('#title').value;
-      const input2 = containerHome.querySelector('#publish').value;
-      postear(input);
-    });
+  
+ 
+    
     const botonDelete = containerHome.querySelectorAll('.delete-btn');
     console.log(botonDelete);
     botonDelete.forEach((btn) => {
@@ -76,6 +83,8 @@ export const home = () => {
       });
     });
   };
-  readData().then((value) => post(value)).catch((error) => console.error(error));
+ 
+
+
   return containerHome;
 };

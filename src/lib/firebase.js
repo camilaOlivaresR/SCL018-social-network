@@ -22,7 +22,7 @@ import {
   doc,
   Timestamp,
   orderBy,
-  getDocs,
+
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -123,19 +123,20 @@ export const postear = async (input) => {
   });
   return docRef;
 };
-export const readData = async () => {
-  const q = await getDocs(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
+//Funcion imprimir data
+export const readData = (callback) => {
+  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
+  onSnapshot(q, (querySnapshot) => {
   const posts = [];
-  q.forEach((element) => {
+  querySnapshot.forEach((element) => {
     posts.push({
       id: element.id,
       ...element.data(),
     });
   });
-  return posts;
-};
-
-
+  callback(posts);
+});
+}
 export const eraseDoc = async (id) => {
   const confirm = window.confirm('¿Quieres eliminar esta publicación?');
   if (confirm) {
