@@ -101,6 +101,7 @@ export const logEmail = (emaiLogin, passwordLogin) => {
 export const postear = async (input) => {
   const user = auth.currentUser;
   const docRef = await addDoc(collection(db, 'contenido'), {
+    username: auth.currentUser.displayName,
     title: input,
     correo: user.email,
     foto: user.photoURL,
@@ -108,6 +109,7 @@ export const postear = async (input) => {
     datePosted: Timestamp.fromDate(new Date()),
 
   });
+  return docRef;
 };
 export const readData = async () => {
   const q = await getDocs(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
@@ -122,20 +124,7 @@ export const readData = async () => {
 };
 
 
-//cerrar sesion
- export const logOut = () => {
-  signOut(auth).then(() => {
-    // Sign-out successful.
-    console.log('cierre de sesión exitoso');
-    window.location.hash = '#/login';
-  }).catch((error) => {
-    console.log(error);
-    // An error happened.
-  });
-}
-
 export const eraseDoc = async (id) => {
-  console.log(id);
   const confirm = window.confirm('¿Quieres eliminar esta publicación?');
   if (confirm) {
     await deleteDoc(doc(db, 'contenido', id));

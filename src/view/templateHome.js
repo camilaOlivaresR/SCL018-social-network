@@ -4,6 +4,7 @@ import {
   readData,
   auth,
   eraseDoc,
+  
 } from '../lib/firebase.js';
 
 export const home = () => {
@@ -40,8 +41,12 @@ export const home = () => {
     console.log(publicaciones);
     publicaciones.forEach((element) => {
       containerHome.querySelector('#publicaciones').innerHTML += `
-      <div class= "contenedorPost">
-      <p name="publication" id="${element.id}">${element.title}</p>
+      <h1 class="user-name">${element.username}</h1>
+      <div class= "contenedorPost"
+     
+      <p name="publication" id="publish">${element.title}</p>
+    
+
       </div>
       <div class="container-wall">
       <ul class ="like-icons" style="list-style: none;">
