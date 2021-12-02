@@ -103,28 +103,24 @@ export const postear = async (input) => {
     correo: user.email,
     foto: user.photoURL,
     id:  auth.currentUser.uid,
+    username: auth.currentUser.displayName,
     datePost: Timestamp.fromDate(new Date()),
 });
 }
 //Funcion imprimir data
-export const readData = (callback) => {
-  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
+export const readData = ( callback) => {
+  const q = query(collection(db, 'contenido'), orderBy('datePost', 'desc'));
   onSnapshot(q, (querySnapshot) => {
-    const posting = [];
-    querySnapshot.forEach((doc) => {
-     const element = {};
-     /* element.id = doc.id;// OH ELY
-      element.data = doc.data(),
-      posting.push(element);//OH ely*/
-      posting.push(doc.data());
-    
-
-      
+    const posts = [];
+    querySnapshot.forEach((element) => {
+      posts.push({
+        id: element.id,
+        ...element.data(),
+      });
     });
-    callback(posting);
-  })
+    callback(posts);
+  });
 };
-
 
 
 export const eraseDoc = async(id) => {

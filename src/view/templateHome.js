@@ -1,4 +1,4 @@
-import { postear, readData, eraseDoc } from '../lib/firebase.js';
+import { postear, readData, eraseDoc,  } from '../lib/firebase.js';
 
 export const home = () => {
   const containerHome = document.createElement('section');
@@ -35,6 +35,7 @@ containerHome.innerHTML = viewHome;
     publicaciones.forEach((element) => {
       containerHome.querySelector('#publicaciones').innerHTML += `
       <div class= "contenedorPost">
+      <h1 class="user-name">${element.username}</h1>
       <p name="publication" id="${element.id}">${element.title}</p>
       </div>
       <div class="container-wall">
@@ -50,10 +51,7 @@ containerHome.innerHTML = viewHome;
 
     });
   }
-  
-
-
-    readData(post); // callback
+  readData(post); // callback
     const titulo = containerHome.querySelector('#publish-btn');
     titulo.addEventListener('click', () => {
       const input = containerHome.querySelector('#title').value;
@@ -61,22 +59,15 @@ containerHome.innerHTML = viewHome;
       console.log(input, input2);
       postear(input);
     });
-
-
- 
   const erase = containerHome.querySelectorAll('.delete-btn');
   erase.forEach((btn) => {
     console.log(btn);
-    btn.addEventListener('click', (e) => {
-      // if(confirm('¿Estas seguro de eliminar tu post? ')) 
+    const id = btn.getAttribute('id');
+    console.log(id);
+    btn.addEventListener('click', () => {
       eraseDoc(id);
-
-    })
-
+    });
   });
-
-
-
 
   return containerHome;
 };
