@@ -1,188 +1,244 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(38, 38, 51);
-}
-.logo {
-  width: 225px;
-  height: 225px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
-.loginContainer {
-  order: 5;
-  text-align: center;
-}
-.password {
-  padding: 1em;
-  margin-top: 1em;
-  width: 17em;
-  height: 3em;
-}
-.name {
-  padding: 1em;
-  width: 17em;
-  height: 3em;
-  outline: none;
-}
-.name:hover {
-  border: 2px solid yellowgreen;
-}
-
-.btn {
-  padding: 0.5em;
-}
-
-.btn-ing {
-  height: 30px;
-  margin-top: 1em;
-  width: 17em;
-  background-color: yellowgreen;
-  outline: none;
-}
-
-.btn-ing:hover {
-  background-color: #0afa12;
-}
-
-.btn-ing,
-.formBtn:hover {
-  border: 2px solid yellowgreen;
-}
-
-p {
-  padding: 1.5em;
-  color: white;
-}
-h1 {
-  padding: 1.5em;
-  color: white;
-}
-a {
-  color: yellowgreen;
-}
-.container {
-  order: 5;
-  text-align: center;
-}
-
-.google {
-  display: flex;
-  justify-content: center;
-  margin-right: 20px;
-}
-.form {
-  padding: 1em;
-  width: 17em;
-  height: 3em;
-  margin-top: 1em;
-  outline: none;
-}
-
-.form:hover {
-  border: 2px solid yellowgreen;
-}
-
-/* CSS MURO */
-
-.icons {
-  width: 100px;
-  height: 100px;
-}
-
-.container-nav {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.header1 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.header2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.header2 .icons{
-  width: 50px ;
-  height: 50px ;
-  margin-top: -30px;
-}
-
-.iconpost {
-  width: 200px;
-  height: 200px;
-}
-
-.default {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 10em;
-}
-.container-home {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-top: 30px;
-}
-.logosportfemnav {
-  width: 200px;
-  height: 200px;
-}
-.espaciado{
-    border-radius: 10px;
-    height: 100px;
-    width: 250px;
-}
-.post{
-  width: auto;
-  height: auto;
-}
-.contenedorPost{
-  background-color: white;
-  border: 1px solid yellowgreen;
-  height:  auto;
-  width: 250px;
-  border-radius: 10px;
-  margin-top: 30px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(38, 38, 51);
+  }
+  .logo {
+    width: 225px;
+    height: 225px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .loginContainer {
+    order: 5;
+    text-align: center;
+  }
+  .password {
+    padding: 1em;
+    margin-top: 1em;
+    width: 17em;
+    height: 3em;
+    outline: none;
+  }
+  .name {
+    padding: 1em;
+    width: 17em;
+    height: 3em;
+    outline: none;
+  }
+  .name:hover {
+    border: 2px solid yellowgreen;
+  }
+  .password:hover {
+    border: 2px solid yellowgreen;
+  }
   
-}
-.contenedorPost p{
-  color: black;
-}
-.publicar-btn{
-  margin-top: 10px;
-  width: 250px;
-  height: 30px;
-  border-radius: 10px;
-  background-color: #F88207;
-  color:white;
-}
-.publicar-btn:hover{
-  background-color: #F88207;
-}
-
-.like-icons{
-  display: flex;
-  flex-direction:row;
-}
-
-.iconpost{
-  width: 50px;
-  height: 50px;
-}
-.user-name{
-  color: #F88207;
-}
+  .btn {
+    padding: 0.5em;
+  }
+  
+  .btn-ing {
+    height: 30px;
+    margin-top: 1em;
+    width: 17em;
+    background-color: yellowgreen;
+    outline: none;
+    color:white;
+  }
+  
+  .btn-ing:hover {
+    background-color: rgb(165, 197, 101);
+    color:white;
+  }
+  
+  .btn-ing,
+  .formBtn:hover {
+    border: 2px solid yellowgreen;
+  }
+  
+  p {
+    padding: 2em;
+    color: white;
+  }
+  h1 {
+    padding: 1.5em;
+    color: white;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  
+  }
+  #registerBtn{
+    color: yellowgreen;
+  }
+  .container {
+    order: 5;
+    text-align: center;
+  }
+  
+  .google {
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+  }
+  .form {
+    padding: 1em;
+    width: 17em;
+    height: 3em;
+    margin-top: 1em;
+    outline: none;
+  }
+  
+  .form:hover {
+    border: 2px solid yellowgreen;
+  }
+  
+  /* CSS MURO */
+  
+  .icons {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .container-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .header1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .header2 .icons{
+    width: 50px ;
+    height: 50px ;
+    margin-top: -30px;
+  }
+  
+  .iconpost {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .default {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10em;
+  }
+  .container-home {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+  }
+  .logosportfemnav {
+    width: 200px;
+    height: 200px;
+  }
+  .espaciado{
+      border-radius: 10px;
+      height: 100px;
+      width: 250px;
+  }
+  .post{
+    width: auto;
+    height: auto;
+  }
+  .contenedorPost{
+    background-color: white;
+    border: 1px solid yellowgreen;
+    height:  auto;
+    width: 250px;
+    border-radius: 10px;
+    margin-top: 30px;
+    
+  }
+  .contenedorPost p{
+    color: black;
+  }
+  .publicar-btn{
+    margin-top: 10px;
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #F88207;
+    color:white;
+  }
+  .publicar-btn:hover{
+    background-color: #F88207;
+  }
+  
+  .like-icons{
+    display: flex;
+    flex-direction:row;
+  }
+  
+  .iconpost{
+    width: 50px;
+    height: 50px;
+  }
+  .container-web{
+    display: none;
+  }
+  @media (min-width: 768px){
+    .container-web{
+      display: block; 
+    }
+    .imgMujeres{
+      width: 25rem;
+      height: 100%;
+    }
+    .container-all{
+     display: flex;
+     flex-direction: row;
+     justify-content: wrap;
+    }
+    .container{
+      align-items: center;
+      padding-left: 50px;
+    }
+    
+  }
+  @media (min-width: 992px){
+    .imgMujeres{
+      width: 35rem;
+    }
+  
+  }
+  @media (min-width: 1200px) {
+    .imgMujeres{
+      width: 55rem;
+    }
+  }
+  
+  .user-name{
+    color: #F88207;
+  }
+  
+  .avatar{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  
+  .user-picture{
+    display: flex;
+    flex-direction: row;
+  }
