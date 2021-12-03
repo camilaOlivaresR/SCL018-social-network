@@ -137,7 +137,7 @@ export const eraseDoc = async (id) => {
 };
 
 // observador
-export const observador = () => {
+/*export const observador = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       if (window.location.hash !== '#/templateHome') {
@@ -151,7 +151,7 @@ export const observador = () => {
       }
     }
   });
-};
+};*/
 
 // cerrar sesion
 export const logOut = () => {
