@@ -62,14 +62,12 @@ export const home = () => {
       postear(input);
     });
     const botonDelete = containerHome.querySelectorAll('.delete-btn');
-    console.log(botonDelete);
     botonDelete.forEach((btn) => {
-      console.log(btn);
       const id = btn.getAttribute('id');
-      console.log(id);
       btn.addEventListener('click', () => {
         eraseDoc(id);
       });
+      containerHome.innerHTML += publicaciones;
     });
   };
   readData().then((value) => post(value)).catch((error) => console.error(error));

@@ -140,13 +140,19 @@ export const eraseDoc = async (id) => {
 export const observador = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      const uid = user.iud;
-    } else {
-      alert('Regístrate para ingresar');
-      window.location.hash = '#/register';
+      if (window.location.hash !== '#/templateHome') {
+        window.location.hash = '#/profile';
+      }
+      const uid = user.uid;
+      // ...
+    } else if (!user) {
+      if (window.location.hash !== '#/register') {
+        window.location.hash = '#/login';
+      }
     }
   });
 };
+
 // cerrar sesion
 export const logOut = () => {
   signOut(auth).then(() => {
