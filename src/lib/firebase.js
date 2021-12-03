@@ -131,17 +131,7 @@ export const eraseDoc = async (id) => {
   }
 };
 
-// observador
-export const observador = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.iud;
-    } else {
-      alert('Regístrate para ingresar');
-      window.location.hash = '#/register';
-    }
-  });
-};
+
 // cerrar sesion
 export const logOut = () => {
   signOut(auth).then(() => {
@@ -153,3 +143,47 @@ export const logOut = () => {
     // An error happened.
   });
 };
+/* observador
+export const observador = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const userId = user.uid;
+      window.location.hash = '#/templateHome';
+      
+    } else if (!user) {
+      logOut();
+ 
+    }
+  });
+};
+/* función observador
+export const onAuth = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+     
+      const userId = user.uid;
+       window.location.hash = '#/nav';
+    } else if (!user) {
+      out();
+    }
+  });
+};*/
+export const observador = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      if (window.location.hash !== '#/register') {
+       
+        window.location.hash = '#/templateHome';
+      }
+     
+      const uid = user.uid;
+      // ...
+    } else if (!user) {
+      if (window.location.hash !== '#/register') {
+  
+        window.location.hash = '#/login';
+      } 
+    }
+  });
+};
+
