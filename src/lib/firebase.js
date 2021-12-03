@@ -169,7 +169,7 @@ export const onAuth = () => {
   });
 };*/
 export const observador = () => {
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, (user) =>{
     if (user) {
       if (window.location.hash !== '#/register') {
        
@@ -179,10 +179,10 @@ export const observador = () => {
       const uid = user.uid;
       // ...
     } else if (!user) {
-      if (window.location.hash !== '#/register') {
+  
   
         window.location.hash = '#/login';
-      } 
+      
     }
   });
 };
