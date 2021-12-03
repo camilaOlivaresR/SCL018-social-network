@@ -67,7 +67,7 @@ export const home = () => {
       btn.addEventListener('click', () => {
         eraseDoc(id);
       });
-      containerHome.innerHTML += publicaciones;
+      containerHome.innerHTML += post();
     });
   };
   readData().then((value) => post(value)).catch((error) => console.error(error));
