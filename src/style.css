@@ -51,7 +51,15 @@
     color:white;
   }
   
-  .btn-ing:hover {
+  .formBtn {
+    height: 30px;
+    margin-top: 1em;
+    width: 17em;
+    background-color: yellowgreen;
+    outline: none;
+    color:white;
+  }
+  .btn-ing :hover {
     background-color: rgb(165, 197, 101);
     color:white;
   }
@@ -196,6 +204,7 @@
   }
   .container-web{
     display: none;
+
   }
   @media (min-width: 768px){
     .container-web{
@@ -241,4 +250,9 @@
   .user-picture{
     display: flex;
     flex-direction: row;
+  }
+ .login-picture{
+    height:700px;
+    width: 900px;
+
   }
