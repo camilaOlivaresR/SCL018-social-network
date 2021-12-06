@@ -33,7 +33,7 @@ export const login = () => {
         </div>
       </div>
       <div class="container-web">
-          <img src="/img/mujeres.jpg" class="imgMujeres" />
+          <img class ="login-picture" src="/img/women.jpg" class="imgMujeres" />
         </div>
     </div>
 
