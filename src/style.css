@@ -51,7 +51,15 @@
     color:white;
   }
   
-  .btn-ing:hover {
+  .formBtn {
+    height: 30px;
+    margin-top: 1em;
+    width: 17em;
+    background-color: yellowgreen;
+    outline: none;
+    color:white;
+  }
+  .btn-ing :hover {
     background-color: rgb(165, 197, 101);
     color:white;
   }
@@ -196,6 +204,7 @@
   }
   .container-web{
     display: none;
+
   }
   @media (min-width: 768px){
     .container-web{
@@ -242,6 +251,7 @@
     display: flex;
     flex-direction: row;
   }
+<<<<<<< HEAD
   .formBtn {
     height: 30px;
     margin-top: 1em;
@@ -250,3 +260,10 @@
     outline: none;
     color:white;
   }
+=======
+ .login-picture{
+    height:700px;
+    width: 900px;
+
+  }
+>>>>>>> 5096bce3a988986d4bb663a9e40b2c5c347bbd4b
