@@ -167,7 +167,7 @@ export const onAuth = () => {
       out();
     }
   });
-};*/
+};
 export const observador = () => {
   onAuthStateChanged(auth, (user) =>{
     if (user) {
@@ -187,3 +187,4 @@ export const observador = () => {
   });
 };
 
+*/
