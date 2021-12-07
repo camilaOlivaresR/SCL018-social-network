@@ -103,7 +103,7 @@ export const logEmail = (emaiLogin, passwordLogin) => {
 export const postear = async (input) => {
   const user = auth.currentUser;
   const docRef = await addDoc(collection(db, 'contenido'), {
-    username: userCredential.user,
+    username: auth.currentUser.displayName,
     title: input,
     correo: user.email,
     foto: user.photoURL,
@@ -149,7 +149,7 @@ export const observador = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
      const userId = user.uid;
-     
+    
      } else if ( window.location.hash === '#/profile') {
       logOut();
     
