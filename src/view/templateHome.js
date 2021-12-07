@@ -47,9 +47,7 @@ export const home = () => {
         <li><img class="iconpost" src="img/11.png" alt="comment"></li>
         <li><img class="iconpost" src="img/12.png" alt="share"></li>
         <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-        ${(element.userId === auth.currentUser.uid) ?
-    ` <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}"></li>
-          ` : ''
+       
 }
       </ul>
       </div>`;
@@ -63,7 +61,9 @@ export const home = () => {
     });
     const botonDelete = containerHome.querySelectorAll('.delete-btn');
     botonDelete.forEach((btn) => {
-      const id = btn.getAttribute('id');
+      btn.getAttribute('id').innerHTML += ${(element.userId === auth.currentUser.uid) ?
+        ` <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}"></li>
+              `: ''
       btn.addEventListener('click', () => {
         eraseDoc(id);
       });
