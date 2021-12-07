@@ -10,10 +10,10 @@ export const login = () => {
         <div class="loginContainer">
           <form class="login">
             <section>
-              <input type="text"class="name" id"loginEmail" placeholder="Ingresa tu email"/>
+              <input type="text"class="name" id="loginEmail" placeholder="Ingresa tu email"/>
             </section>
             <section>
-              <input type="password" class="password" id"loginPassword"
+              <input type="password" class="password" id="loginPassword"
               placeholder="Ingresa tu contraseña"/>
             </section>
           </form>

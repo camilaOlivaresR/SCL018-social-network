@@ -47,8 +47,8 @@ export const home = () => {
         <li><img class="iconpost" src="img/11.png" alt="comment"></li>
         <li><img class="iconpost" src="img/12.png" alt="share"></li>
         <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-        ${(element.userId === auth.currentUser.uid)
-    ? ` <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}"></li>
+        ${(element.userId === auth.currentUser.uid) ?
+    ` <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}"></li>
           ` : ''
 }
       </ul>
@@ -67,7 +67,6 @@ export const home = () => {
       btn.addEventListener('click', () => {
         eraseDoc(id);
       });
-      containerHome.innerHTML += post();
     });
   };
   readData().then((value) => post(value)).catch((error) => console.error(error));

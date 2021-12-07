@@ -38,10 +38,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
 const db = getFirestore(app);
-console.log(app);
 
+
+
+
+//AUTENTICACION GOOGLE
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider(app);
   signInWithPopup(auth, provider)
@@ -51,11 +53,9 @@ export const signInGoogle = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-
-      window.location.hash = '#/templateHome';
+      window.location.hash = "#/templateHome";
       return user;
-      // ...
-    })
+       })
     .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -70,21 +70,19 @@ export const signInGoogle = () => {
 export const newEmail = (email, newpassword) => {
   // retornar esta funcion, hacer cambio de hash
   createUserWithEmailAndPassword(auth, email, newpassword)
+  //esto me regresa una promesa, then= resultado de una promesa
     .then((userCredential) => {
-      // Signed in
+      // Signed in/ result de la promesa 
       const user = userCredential.user;
-
-      window.location.hash = '#/login';
-
-      return user;
+       //consultar o actualizar la data basica del usuario como url de la foto
+      window.location.hash = "#/login";
+       return user;
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
-      return errorCode + errorMessage;
     });
-  return createUserWithEmailAndPassword;
+        
 };
 // USUARIOS REGISTRADOS
 export const logEmail = (emaiLogin, passwordLogin) => {
@@ -92,8 +90,7 @@ export const logEmail = (emaiLogin, passwordLogin) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-
-      window.location.hash = '#/templateHome';
+    window.location.hash = '#/templateHome';
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -102,18 +99,17 @@ export const logEmail = (emaiLogin, passwordLogin) => {
     });
 };
 
-// Add a new document with a generated id, post
-
+// Add a new document with a generated id, post,crear coleccion de post
 export const postear = async (input) => {
   const user = auth.currentUser;
   const docRef = await addDoc(collection(db, 'contenido'), {
+    username: auth.currentUser.displayName,
     title: input,
-    description: input,
     correo: user.email,
     foto: user.photoURL,
     userId: auth.currentUser.uid,
     datePosted: Timestamp.fromDate(new Date()),
-    username: auth.currentUser.displayName,
+
   });
   return docRef;
 };
@@ -128,39 +124,37 @@ export const readData = async () => {
   });
   return posts;
 };
+
+
 export const eraseDoc = async (id) => {
-  console.log(id);
   const confirm = window.confirm('¿Quieres eliminar esta publicación?');
   if (confirm) {
     await deleteDoc(doc(db, 'contenido', id));
   }
 };
-
-// observador
-/*export const observador = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      if (window.location.hash !== '#/templateHome') {
-        window.location.hash = '#/profile';
-      }
-      const uid = user.uid;
-      // ...
-    } else if (!user) {
-      if (window.location.hash !== '#/register') {
-        window.location.hash = '#/login';
-      }
-    }
-  });
-};*/
-
 // cerrar sesion
 export const logOut = () => {
   signOut(auth).then(() => {
     // Sign-out successful.
-    console.log('cierre de sesión');
     window.location.hash = '#/login';
   }).catch((error) => {
     console.log(error);
     // An error happened.
   });
 };
+
+
+//observador
+export const observador = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+     const userId = user.uid;
+     
+     } else if ( window.location.hash === '#/profile') {
+      logOut();
+    
+  } 
+  });
+};
+
+
