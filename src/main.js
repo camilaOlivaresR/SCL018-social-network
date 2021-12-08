@@ -2,16 +2,18 @@ import {
   changeRoute,
 } from './lib/router.js';
 import {
-  observador,
+  observed
 } from './lib/firebase.js';
 
 const init = () => {
   window.location.hash = '#/login';
   changeRoute(window.location.hash);
-  //observador();
+  //observed();
+  
 };
 window.addEventListener('load', init);
 window.addEventListener('hashchange', () => {
+  observed();
   changeRoute(window.location.hash);
-  observador();
+
 });

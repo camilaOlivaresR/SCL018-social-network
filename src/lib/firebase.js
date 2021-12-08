@@ -113,17 +113,20 @@ export const postear = async (input) => {
   });
   return docRef;
 };
-export const readData = async () => {
-  const q = await getDocs(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
+//Funcion imprimir data
+export const readData = (callback) => {
+  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
+  onSnapshot(q, (querySnapshot) => {
   const posts = [];
-  q.forEach((element) => {
+  querySnapshot.forEach((element) => {
     posts.push({
       id: element.id,
       ...element.data(),
     });
   });
-  return posts;
-};
+  callback(posts);
+});
+}
 
 
 export const eraseDoc = async (id) => {
@@ -145,16 +148,30 @@ export const logOut = () => {
 
 
 //observador
-export const observador = () => {
+export const observed = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
      const userId = user.uid;
-    
-     } else if ( window.location.hash === '#/profile') {
+    } else if ( window.location.hash === '#/templateHome') {
       logOut();
-    
   } 
   });
 };
 
 
+/*
+export const observador = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      window.location.hash = "#/templateHome";
+      const uid = user.uid;
+      console.log(`bienvenida ${uid}`);
+    } else if (!user) {
+      if (window.location.hash !== "#/register") {
+        logOut();
+      }
+    }
+  });
+};
+
+*/

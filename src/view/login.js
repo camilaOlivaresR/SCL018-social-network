@@ -13,8 +13,7 @@ export const login = () => {
               <input type="text"class="name" id="loginEmail" placeholder="Ingresa tu email"/>
             </section>
             <section>
-              <input type="password" class="password" id="loginPassword"
-              placeholder="Ingresa tu contraseña"/>
+              <input type="password" class="password" id="loginPassword" placeholder="Ingresa tu contraseña"/>
             </section>
           </form>
           <div class="btn">
@@ -32,9 +31,6 @@ export const login = () => {
           </p>
         </div>
       </div>
-      <div class="container-web">
-          <img class ="login-picture" src="/img/women.jpg" class="imgMujeres" />
-        </div>
     </div>
 
   `;
@@ -45,7 +41,7 @@ export const login = () => {
 
   containerLogin.querySelector('#btn-login').addEventListener('click', () => {
     const emaiLogin = containerLogin.querySelector('#loginEmail').value;
-    const passwordLogin = containerLogin.containerLogin('#loginPassword').value;
+    const passwordLogin = containerLogin.querySelector('#loginPassword').value;
     logEmail(emaiLogin, passwordLogin);
   });
 

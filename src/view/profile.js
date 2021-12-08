@@ -1,4 +1,4 @@
-import { logOut } from '../lib/firebase.js';
+/*import { logOut } from '../lib/firebase.js';
 
 export const profile = () => {
   const containerProfile = document.createElement('section');
@@ -29,3 +29,4 @@ export const profile = () => {
 
   return containerProfile;
 };
+*/

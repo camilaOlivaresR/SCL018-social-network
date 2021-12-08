@@ -2,7 +2,7 @@
 import { login } from '../view/login.js';
 import { register } from '../view/register.js';
 import { home } from '../view/templateHome.js';
-import { profile } from '../view/profile.js';
+
 
 export const changeRoute = (hash) => {
   const containerRoot = document.getElementById('root');
@@ -19,10 +19,6 @@ export const changeRoute = (hash) => {
 
     case '#/templateHome':
       containerRoot.appendChild(home());
-      break;
-
-    case '#/profile':
-      containerRoot.appendChild(profile());
       break;
 
     default:
