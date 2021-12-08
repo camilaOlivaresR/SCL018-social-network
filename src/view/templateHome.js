@@ -57,23 +57,23 @@ export const home = () => {
       </div>`;
     });
   
-    
-    const publish = containerHome.querySelector('#publish-btn');
-    publish.addEventListener('click', () => {
+    console.log(containerHome);
+    const titulo = containerHome.querySelector('#publish-btn');
+    titulo.addEventListener('click', () => {
       const input = containerHome.querySelector('#title').value;
       const input2 = containerHome.querySelector('#publish').value;
-      postear(input);
+      postear(input , input2);
     });
-    readData(post);
     const botonDelete = containerHome.querySelectorAll('.delete-btn');
     botonDelete.forEach((btn) => {
-      btn.getAttribute('id');
+      const id = btn.getAttribute('id');
       btn.addEventListener('click', () => {
         eraseDoc(id);
       });
+      containerHome.innerHTML += post();
     });
   };
- 
+  readData().then((value) => post(value)).catch((error) => console.error(error));
   return containerHome;
 };
 

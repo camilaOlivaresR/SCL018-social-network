@@ -114,18 +114,16 @@ export const postear = async (input) => {
   return docRef;
 };
 //Funcion imprimir data
-export const readData = (callback) => {
-  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
-  onSnapshot(q, (querySnapshot) => {
+export const readData = async () => {
+  const q = await getDocs(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
   const posts = [];
-  querySnapshot.forEach((element) => {
+  q.forEach((element) => {
     posts.push({
       id: element.id,
       ...element.data(),
     });
   });
-  callback(posts);
-});
+  return posts;
 }
 
 
