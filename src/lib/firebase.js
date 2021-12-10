@@ -104,12 +104,11 @@ export const postear = async (input) => {
   const user = auth.currentUser;
   const docRef = await addDoc(collection(db, 'contenido'), {
     username: auth.currentUser.displayName,
+    userId: auth.currentUser.uid,
     title: input,
     correo: user.email,
     foto: user.photoURL,
-    userId: auth.currentUser.uid,
     datePosted: Timestamp.fromDate(new Date()),
-
   });
   return docRef;
 };
@@ -119,19 +118,32 @@ export const readData = async () => {
   const posts = [];
   q.forEach((element) => {
     posts.push({
-      id: element.id,
-      ...element.data(),
+      id: element.id,//accder id del documento
+      ...element.data(),//acceder id del usuario
     });
   });
   return posts;
 }
 
+/*Funcion imprimir data
+export const readData = (callback) => {
+  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
+  onSnapshot(q, (querySnapshot) => {
+  const posts = [];
+  querySnapshot.forEach((element) => {
+    posts.push({
+      id: element.id,
+      ...element.data(),
+    });
+  });
+  callback(posts);
+});
+}
+*/
+
 
 export const eraseDoc = async (id) => {
-  const confirm = window.confirm('¿Quieres eliminar esta publicación?');
-  if (confirm) {
     await deleteDoc(doc(db, 'contenido', id));
-  }
 };
 // cerrar sesion
 export const logOut = () => {

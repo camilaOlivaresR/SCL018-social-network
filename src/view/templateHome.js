@@ -22,8 +22,8 @@ export const home = () => {
   <textarea type="text" placeholder="Publica aquí" id="title" cols="20" rows="10"class="espaciado"></textarea>
   <button class="publicar-btn" id="publish-btn">Publicar</button>
   </section> 
-  <section id = "publicaciones" class="post">
-  </section>
+  <div id ="publicaciones" class="post">
+  </div>
 </div>`;
 
   containerHome.innerHTML = viewHome;
@@ -33,16 +33,20 @@ export const home = () => {
       logOut();
       window.location.hash = '#/login';
     });
-   
+    
+   //crear nuevo nodo sustituir innerHtml por appendChild
+   //crear post como nuevo nodo y luego agregar la siguiente funcion
+   // adjuntar al nodo padre= containerHome.appendChild(post)
   const post = (publicaciones) => {
     publicaciones.forEach((element) => {
       containerHome.querySelector('#publicaciones').innerHTML += `
+      <section class="public" id="${element.id}">
       <div class= "contenedorPost">
       <div class= "user-picture">
       <img class= "avatar" src="img/avatar.jpg" alt="avatar">  
       <h1 class="user-name">${element.username}</h1> 
       </div>
-      <p name="publication" id="publish">${element.title}</p>
+      <p name="publication" class="publish" id=${element.id}>${element.title}</p>
       </div>
       <div class="container-wall">
       <ul class ="like-icons" style="list-style: none;">
@@ -54,23 +58,33 @@ export const home = () => {
           ` : ''
 }
       </ul>
-      </div>`;
+      </div>
+      </section>`;
     });
   
     console.log(containerHome);
     const titulo = containerHome.querySelector('#publish-btn');
     titulo.addEventListener('click', () => {
       const input = containerHome.querySelector('#title').value;
-      const input2 = containerHome.querySelector('#publish').value;
+      const input2 = containerHome.querySelector('.publish').value;
       postear(input , input2);
     });
+    
+    const referencia = containerHome.querySelector('.public')
+    console.log(referencia);
     const botonDelete = containerHome.querySelectorAll('.delete-btn');
     botonDelete.forEach((btn) => {
       const id = btn.getAttribute('id');
       btn.addEventListener('click', () => {
+        const confirm = window.confirm('¿Quieres eliminar esta publicación?');
+        if (confirm) {
         eraseDoc(id);
+        referencia.remove();
+     
+       
+        }
       });
-      containerHome.innerHTML += post();
+      //containerHome.innerHTML += post(); cambiarlo pro algo asi como post.remove()
     });
   };
   readData().then((value) => post(value)).catch((error) => console.error(error));
