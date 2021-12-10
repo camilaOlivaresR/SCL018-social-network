@@ -9,7 +9,6 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
 import {
@@ -18,7 +17,6 @@ import {
   addDoc,
   query,
   onSnapshot,
-  deleteDoc,
   doc,
   Timestamp,
   orderBy,
@@ -106,26 +104,13 @@ export const postear = async (input) => {
     correo: user.email,
     foto: user.photoURL,
     userId: auth.currentUser.uid,
-    datePosted: Timestamp.fromDate(new Date()),
-
- /*CONSTRUCCION ELIMINAR POST
-  .then((algo) => {
-      docRef.id.updateProfile;
-    docRef.id.update(id)
-   // return docRef;
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    return errorCode + errorMessage;
-  })*/
-  
+    datePosted: Timestamp.fromDate(new Date()),  
   });
   return docRef;
 };
 //Funcion imprimir data
 export const readData = (callback) => {
-  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
+  const q = query(collection(db, "contenido"), orderBy('datePosted', 'desc'));
   onSnapshot(q, (querySnapshot) => {
   const posts = [];
   querySnapshot.forEach((element) => {
@@ -137,24 +122,7 @@ export const readData = (callback) => {
   callback(posts);
 });
 }
-export const eraseDoc = async (id) => {
-  const confirm = window.confirm('¿Quieres eliminar esta publicación?');
-  if (confirm) {
-    await deleteDoc(doc(db, 'contenido', id));
-  }
-};
 
-// observador
-export const observador = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.iud;
-    } else {
-      alert('Regístrate para ingresar');
-      window.location.hash = '#/register';
-    }
-  });
-};
 // cerrar sesion
 export const logOut = () => {
   signOut(auth).then(() => {

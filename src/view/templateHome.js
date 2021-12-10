@@ -2,8 +2,8 @@
 import {
   postear,
   readData,
-  auth,
-  eraseDoc,
+  //auth,
+  //eraseDoc,
   
 } from '../lib/firebase.js';
 
@@ -53,38 +53,20 @@ export const home = () => {
         <li><img class="iconpost" src="img/11.png" alt="comment"></li>
         <li><img class="iconpost" src="img/12.png" alt="share"></li>
         <li><img class="iconpost" src="img/13.png" alt="edit"></li>
-        ${(element.userId === auth.currentUser.uid)
-    ? ` <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}"></li>
-          ` : ''
-}
+       <li><img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}"></li>
       </ul>
       </div>`;
 
       readData(post); // callback
+     
       const titulo = containerHome.querySelector('#publish-btn');
       titulo.addEventListener('click', () => {
         const input = containerHome.querySelector('#title').value;
-        const input2 = containerHome.querySelector('#publish').value;
-        console.log(input, input2);
+        const input2 = containerHome.querySelector('.post').value;
+        console.log(input);
         postear(input);
       });
     });
-  
- 
-    
-    const botonDelete = containerHome.querySelectorAll('.delete-btn');
-    console.log(botonDelete);
-    botonDelete.forEach((btn) => {
-      console.log(btn);
-      const id = btn.getAttribute('id');
-      console.log(id);
-      btn.addEventListener('click', () => {
-        eraseDoc(id);
-      });
-    });
-  };
- 
-
-
+    };
   return containerHome;
 };
