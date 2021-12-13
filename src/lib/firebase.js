@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-unresolved */
 import {
   initializeApp,
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js';
@@ -22,7 +20,6 @@ import {
   doc,
   Timestamp,
   orderBy,
-  getDocs,
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -40,9 +37,6 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore(app);
 
-
-
-
 //AUTENTICACION GOOGLE
 export const signInGoogle = () => {
   const provider = new GoogleAuthProvider(app);
@@ -51,18 +45,15 @@ export const signInGoogle = () => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      // The signed-in user info.
       const user = result.user;
       window.location.hash = "#/templateHome";
-      return user;
+      
        })
     .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
-      // The email of the user's account used.
       const email = error.email;
-      // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
     });
 };
@@ -70,13 +61,10 @@ export const signInGoogle = () => {
 export const newEmail = (email, newpassword) => {
   // retornar esta funcion, hacer cambio de hash
   createUserWithEmailAndPassword(auth, email, newpassword)
-  //esto me regresa una promesa, then= resultado de una promesa
     .then((userCredential) => {
-      // Signed in/ result de la promesa 
       const user = userCredential.user;
-       //consultar o actualizar la data basica del usuario como url de la foto
       window.location.hash = "#/login";
-       return user;
+  
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -88,8 +76,8 @@ export const newEmail = (email, newpassword) => {
 export const logEmail = (emaiLogin, passwordLogin) => {
   signInWithEmailAndPassword(auth, emaiLogin, passwordLogin)
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
+      console.log(user);
     window.location.hash = '#/templateHome';
     })
     .catch((error) => {
@@ -98,57 +86,43 @@ export const logEmail = (emaiLogin, passwordLogin) => {
       return errorCode + errorMessage;
     });
 };
+ 
+
+
 
 // Add a new document with a generated id, post,crear coleccion de post
-export const postear = async (input) => {
-  const user = auth.currentUser;
-  const docRef = await addDoc(collection(db, 'contenido'), {
+export const addData = async (input) => {
+  const contentPost = await addDoc(collection(db, 'contenido'), {
     username: auth.currentUser.displayName,
     userId: auth.currentUser.uid,
     title: input,
-    correo: user.email,
-    foto: user.photoURL,
+    correo: auth.currentUser.email,
+    foto: auth.currentUser.photoURL,
     datePosted: Timestamp.fromDate(new Date()),
   });
-  return docRef;
+  return contentPost;
 };
-//Funcion imprimir data
-export const readData = async () => {
-  const q = await getDocs(collection(db, 'contenido'), orderBy('datePosted', 'desc'));
-  const posts = [];
-  q.forEach((element) => {
-    posts.push({
-      id: element.id,//accder id del documento
-      ...element.data(),//acceder id del usuario
-    });
-  });
-  return posts;
-}
 
-/*Funcion imprimir data
 export const readData = (callback) => {
-  const q = query(collection(db, "contenido"), orderBy('datePost', 'desc'));
-  onSnapshot(q, (querySnapshot) => {
-  const posts = [];
-  querySnapshot.forEach((element) => {
-    posts.push({
-      id: element.id,
-      ...element.data(),
+  const q = query(collection(db, "contenido") ,orderBy('datePosted', 'desc'));
+  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    const poster = [];
+    querySnapshot.forEach((_doc) => {
+      poster.push({ ..._doc.data(), id: _doc.id });
     });
+    
+    callback(poster, auth.currentUser);
+  
   });
-  callback(posts);
-});
-}
-*/
-
+};
 
 export const eraseDoc = async (id) => {
     await deleteDoc(doc(db, 'contenido', id));
 };
+
 // cerrar sesion
 export const logOut = () => {
   signOut(auth).then(() => {
-    // Sign-out successful.
     window.location.hash = '#/login';
   }).catch((error) => {
     console.log(error);
@@ -156,32 +130,16 @@ export const logOut = () => {
   });
 };
 
-
 //observador
 export const observed = () => {
   onAuthStateChanged(auth, (user) => {
-    if (user) {
-     const userId = user.uid;
-    } else if ( window.location.hash === '#/templateHome') {
-      logOut();
+ if (user) {
+     const uid = user.uid;
+     window.location.hash === '#/templateHome'
+
+    } else {
+      window.location.hash === '#/register'
+     
   } 
   });
 };
-
-
-/*
-export const observador = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      window.location.hash = "#/templateHome";
-      const uid = user.uid;
-      console.log(`bienvenida ${uid}`);
-    } else if (!user) {
-      if (window.location.hash !== "#/register") {
-        logOut();
-      }
-    }
-  });
-};
-
-*/
