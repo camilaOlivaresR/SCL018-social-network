@@ -16,7 +16,7 @@ export const register = () => {
           </section>
           <section>
         <input type="password" class="form"id="password"
-          placeholder="Ingresa tu contraseña"/>
+          placeholder="Ingresa tu contraseña 6 caracteres"/>
           </section>
           <button class="formBtn" id="newRegister">Registrar</button>`;
 

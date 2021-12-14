@@ -9,6 +9,8 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  setPersistence, 
+  browserSessionPersistence
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-auth.js';
 import {
   getFirestore,
@@ -20,7 +22,10 @@ import {
   doc,
   Timestamp,
   orderBy,
+ // updateDoc,
+
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCRXzTGFbssFI_Vgt69WYFu5HAtJeW2vhk',
@@ -87,9 +92,6 @@ export const logEmail = (emaiLogin, passwordLogin) => {
     });
 };
  
-
-
-
 // Add a new document with a generated id, post,crear coleccion de post
 export const addData = async (input) => {
   const contentPost = await addDoc(collection(db, 'contenido'), {
@@ -111,7 +113,7 @@ export const readData = (callback) => {
       poster.push({ ..._doc.data(), id: _doc.id });
     });
     
-    callback(poster, auth.currentUser);
+    callback(poster);
   
   });
 };
@@ -130,16 +132,62 @@ export const logOut = () => {
   });
 };
 
+
+
 //observador
 export const observed = () => {
   onAuthStateChanged(auth, (user) => {
  if (user) {
      const uid = user.uid;
-     window.location.hash === '#/templateHome'
-
-    } else {
-      window.location.hash === '#/register'
+    
+    } else if ( window.location.hash === '#/templateHome') {
+      logOut(); 
      
   } 
   });
 };
+
+
+setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return signInWithEmailAndPassword(auth, email, password);
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
+
+
+
+/*observador
+export const observed = () => {
+  onAuthStateChanged(auth, (user) => {
+ if (user) {
+     const uid = user.uid;
+     window.location.hash === '#/templateHome';
+    
+    } else if (!user) {
+        if (window.location.hash !== '#/register') {
+              window.location.hash = '#/login';
+        }  
+  } 
+  });
+};
+*/
+/*editar
+
+export const editPost = async (id, titleUp, descriptionUp) => {
+  const postRef = doc(db, 'posts', id);
+  await updateDoc(postRef, {
+    boardgame: titleUp,
+    description: descriptionUp,
+  });
+};
+*/ 

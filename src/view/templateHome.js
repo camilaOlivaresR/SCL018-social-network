@@ -1,7 +1,7 @@
 import {
   addData,
   readData,
-  //auth,
+  auth,
   eraseDoc,
   logOut,
 } from '../lib/firebase.js';
@@ -31,19 +31,24 @@ export const home = () => {
     addData(input);
   });
 
-  const post = (publicaciones , usuario) => {
+  const post = (publicaciones ) => {
     containerHome.querySelector("#publicaciones").innerHTML = "";
     publicaciones.forEach((element) => {
+     // console.log(element);
+    // console.log('User Id:' + auth.currentUser.uid);
       containerHome.querySelector("#publicaciones").innerHTML += `
       <section class="public" id="${element.id}">
       <div class= "contenedorPost">
-      <img class="avatar" src=${element.foto} alt="fotografia de perfil email">  
+      <img class="avatar" referrerpolicy="no-referrer" src=${element.foto} alt="fotografia de perfil email">  
       <h1 class="user-name">${element.username}</h1> 
       <p name="publication" id="publish">${element.title}</p>
       </div>
       <div class="container-wall">
-        <img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}">
-        <img class="iconpost" src="img/13.png" alt="edit">   
+      ${(element.userId === auth.currentUser.uid) ?
+          ` <img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}">
+          <img class="iconpost" src="img/13.png" alt="edit">
+              ` : ''
+        }
       </div>
       </section>`
 
