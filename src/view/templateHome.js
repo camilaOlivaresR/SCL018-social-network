@@ -59,7 +59,7 @@ export const home = () => {
     titulo.addEventListener('click', () => {
       const input = containerHome.querySelector('#title').value;
       const input2 = containerHome.querySelector('#publish').value;
-      postear(input , input2);
+      postear(input, input2);
     });
     const botonDelete = containerHome.querySelectorAll('.delete-btn');
     botonDelete.forEach((btn) => {
