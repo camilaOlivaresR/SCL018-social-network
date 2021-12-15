@@ -8,8 +8,8 @@
     background-color: rgb(38, 38, 51);
   }
   .logo {
-    width: 30vh;
-    height: 30vh;
+    width: 45vw;
+    height: 45vh;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -22,13 +22,13 @@
     padding: 1em;
     margin-top: 1em;
     width: 17em;
-    height: 3em;
+    height: 8vh;
     outline: none;
   }
   .name {
     padding: 1em;
     width: 17em;
-    height: 3em;
+    height: 8vh;
     outline: none;
   }
   .name:hover {
@@ -43,7 +43,7 @@
   }
   
   .btn-ing {
-    height: 30px;
+    height: 8vh;
     margin-top: 1em;
     width: 17em;
     background-color: yellowgreen;
@@ -70,7 +70,7 @@
   }
   
   p {
-    padding: 2em;
+    padding: 1vh;
     color: white;
   }
   h1 {
@@ -154,7 +154,8 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 30px;
+
+ 
   }
   .logosportfemnav {
     width: 200px;
@@ -176,6 +177,7 @@
   width: 60vh;
   border-radius: 1em;
   margin-top: 4vh;
+  margin-bottom: 1vh;
   }
   .name-avatar{
     display: flex;
@@ -244,4 +246,9 @@
  .container-wall{
   display: flex;
   flex-direction: row-reverse;
+ }
+
+ .publish{
+   padding: 0%;
+   margin-bottom: 2vh;
  }

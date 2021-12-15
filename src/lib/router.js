@@ -24,7 +24,7 @@ export const changeRoute = (hash) => {
 
     case '#/templateHome' :
     
-      containerRoot.appendChild(home()) 
+      containerRoot.appendChild(home()); 
      
      
       break;

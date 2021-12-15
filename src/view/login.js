@@ -6,7 +6,7 @@ export const login = () => {
   const viewLogin = `
   <div class="container-all">
       <div class="container">
-        <img src="/img/logo.png" class="logo" alt="Logo Sport Fem" />
+        <img src="img/logo.png" class="logo" alt="Logo Sport Fem" />
         <div class="loginContainer">
           <form class="login">
             <section>
@@ -23,7 +23,7 @@ export const login = () => {
           </div>
           <p>Accede con :</p>
           <div class="google">
-            <img src="/img/google1.png" id="loginGoogle" />
+            <img src="img/google1.png" id="loginGoogle" />
           </div>
           <p>
             Si no tienes una cuenta

@@ -36,15 +36,17 @@ export const home = () => {
     containerHome.querySelector("#publicaciones").innerHTML = "";
     publicaciones.forEach((element) => {
      // console.log(element);
-    // console.log('User Id:' + auth.currentUser.uid);
+    console.log(auth.currentUser.uid);
       containerHome.querySelector("#publicaciones").innerHTML += `
       <section class="public" id="${element.id}">
       <div class= "contenedorPost">
-      <section class=name-avatar>
+      <div class=name-avatar>
       <img class="avatar" referrerpolicy="no-referrer" src=${element.foto} alt="fotografia de perfil email">  
       <h1 class="user-name">${element.username}</h1> 
-      </section>
+      </div>
+      <div class='publish'>
       <p name="publication" id="publish">${element.title} </p>
+      </div>
       </div>
        <div class="container-wall">
       ${(element.userId === auth.currentUser.uid) ?
