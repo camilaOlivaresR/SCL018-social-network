@@ -3,7 +3,7 @@ import { newEmail } from '../lib/firebase.js';
 export const register = () => {
   const formRegister = document.createElement('section');
   const viewRegister = `
-    <img src="/img/logo.png" class="logo" alt="Logo Sport Fem">
+    <img src="img/logo.png" class="logo" alt="Logo Sport Fem">
     <div class="container">
     <form class="login">
     <section>
@@ -25,7 +25,11 @@ export const register = () => {
   formRegister.querySelector('#newRegister').addEventListener('click', () => {
     const email = formRegister.querySelector('#email').value;
     const newpassword = formRegister.querySelector('#password').value;
-    newEmail(email, newpassword);
+    if(newpassword.length < 6){
+       alert('Tu contraseña debe tener 6 caracteres')
+    }else{
+      newEmail(email, newpassword);
+    }
   });
 
   return formRegister;

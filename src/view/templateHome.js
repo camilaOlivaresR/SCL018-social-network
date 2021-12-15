@@ -30,6 +30,8 @@ export const home = () => {
   titulo.addEventListener('click', () => {
     const input = containerHome.querySelector('#title').value;
     addData(input);
+    containerHome.querySelector('#title').value= "";
+
   });
 
   const post = (publicaciones ) => {
