@@ -4,6 +4,7 @@ import {
   auth,
   eraseDoc,
   logOut,
+  editPost,
 } from '../lib/firebase.js';
 
 export const home = () => {
@@ -39,20 +40,22 @@ export const home = () => {
       containerHome.querySelector("#publicaciones").innerHTML += `
       <section class="public" id="${element.id}">
       <div class= "contenedorPost">
+      <section class=name-avatar>
       <img class="avatar" referrerpolicy="no-referrer" src=${element.foto} alt="fotografia de perfil email">  
       <h1 class="user-name">${element.username}</h1> 
-      <p name="publication" id="publish">${element.title}</p>
+      </section>
+      <p name="publication" id="publish">${element.title} </p>
       </div>
-      <div class="container-wall">
+       <div class="container-wall">
       ${(element.userId === auth.currentUser.uid) ?
           ` <img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}">
-          <img class="iconpost" src="img/13.png" alt="edit">
+          <img class="iconpost" src="img/13.png" alt="edit"  id="${element.id}">
               ` : ''
         }
       </div>
       </section>`
 
-
+      //input type capturar el value , o vaciarlo
 
       const referencia = containerHome.querySelector('.public')
       const botonDelete = containerHome.querySelectorAll('.delete-btn');
@@ -69,6 +72,18 @@ export const home = () => {
     });
   };
   readData(post);
+
+  // editar, actualizar post:
+  const editButton = containerHome.querySelectorAll('.iconpost');
+  editButton.forEach((btn) => {
+    const id = btn.getAttribute('id');
+    btn.addEventListener('click', () => {
+      btn.removeAttribute('readonly')
+      editPost(id)
+    })
+  });
+
+
 
   // cerrar sesion
   const out = containerHome.querySelector('#btn-out');

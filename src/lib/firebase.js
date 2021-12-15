@@ -143,7 +143,10 @@ export const observed = () => {
     } else if ( window.location.hash === '#/templateHome') {
       logOut(); 
      
-  } 
+  } else if(!user){
+    window.location.hash === '#/templateHome'
+    alert('Tienes que Registrarte');
+  }
   });
 };
 
@@ -165,29 +168,12 @@ setPersistence(auth, browserSessionPersistence)
 
 
 
+//editar
 
-/*observador
-export const observed = () => {
-  onAuthStateChanged(auth, (user) => {
- if (user) {
-     const uid = user.uid;
-     window.location.hash === '#/templateHome';
-    
-    } else if (!user) {
-        if (window.location.hash !== '#/register') {
-              window.location.hash = '#/login';
-        }  
-  } 
-  });
-};
-*/
-/*editar
-
-export const editPost = async (id, titleUp, descriptionUp) => {
-  const postRef = doc(db, 'posts', id);
+export const editPost = async (id,  ) => {//nuevo mensaje generado
+  const postRef = doc(db, 'contenido', id);
   await updateDoc(postRef, {
-    boardgame: titleUp,
-    description: descriptionUp,
+  //indicar campo a actualizar
+  //key nuevo mensaje
   });
 };
-*/ 

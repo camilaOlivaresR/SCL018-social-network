@@ -8,8 +8,8 @@
     background-color: rgb(38, 38, 51);
   }
   .logo {
-    width: 225px;
-    height: 225px;
+    width: 30vh;
+    height: 30vh;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -162,29 +162,36 @@
   }
   .espaciado{
       border-radius: 10px;
-      height: 100px;
-      width: 250px;
+      height: auto;
+      width: 60vh;
   }
   .post{
     width: auto;
     height: auto;
   }
   .contenedorPost{
-    background-color: white;
-    border: 1px solid yellowgreen;
-    height:  auto;
-    width: 250px;
-    border-radius: 10px;
-    margin-top: 30px;
+  background-color: white;
+  border: 1px solid yellowgreen;
+  height: auto;
+  width: 60vh;
+  border-radius: 1em;
+  margin-top: 4vh;
   }
+  .name-avatar{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+    justify-content: center;
+  }
+
   .contenedorPost p{
     color: black;
   }
   .publicar-btn{
-    margin-top: 10px;
-    width: 250px;
-    height: 30px;
-    border-radius: 10px;
+    margin-top: 4vh;
+    width: 60vh;
+    height: 8vh;
+    border-radius: 2em;
     background-color: #F88207;
     color:white;
   }
@@ -198,8 +205,8 @@
   }
   
   .iconpost{
-    width: 50px;
-    height: 50px;
+    width: 10vh;
+    height: 10vh;
     
   }
 
@@ -211,11 +218,11 @@
     .container-all{
      display: flex;
      flex-direction: row;
-     justify-content: wrap;
+     justify-content: center;
     }
     .container{
       align-items: center;
-      padding-left: 50px;
+      
     }
     
  
@@ -234,4 +241,7 @@
     display: flex;
     flex-direction: row;
   }
- 
+ .container-wall{
+  display: flex;
+  flex-direction: row-reverse;
+ }
