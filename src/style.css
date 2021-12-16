@@ -1,245 +1,254 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(38, 38, 51);
-  }
-  .logo {
-    width: 30vh;
-    height: 30vh;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-  }
-  .loginContainer {
-    order: 5;
-    text-align: center;
-  }
-  .password {
-    padding: 1em;
-    margin-top: 1em;
-    width: 17em;
-    height: 3em;
-    outline: none;
-  }
-  .name {
-    padding: 1em;
-    width: 17em;
-    height: 3em;
-    outline: none;
-  }
-  .name:hover {
-    border: 2px solid yellowgreen;
-  }
-  .password:hover {
-    border: 2px solid yellowgreen;
-  }
-  
-  .btn {
-    padding: 0.5em;
-  }
-  
-  .btn-ing {
-    height: 30px;
-    margin-top: 1em;
-    width: 17em;
-    background-color: yellowgreen;
-    outline: none;
-    color:white;
-  }
-  
-  .formBtn {
-    height: 30px;
-    margin-top: 1em;
-    width: 17em;
-    background-color: yellowgreen;
-    outline: none;
-    color:white;
-  }
-  .btn-ing :hover {
-    background-color: rgb(165, 197, 101);
-    color:white;
-  }
-  
-  .btn-ing,
-  .formBtn:hover {
-    border: 2px solid yellowgreen;
-  }
-  
-  p {
-    padding: 2em;
-    color: white;
-  }
-  h1 {
-    padding: 1.5em;
-    color: white;
-  }
-  a {
-    color: white;
-    text-decoration: none;
-  
-  }
-  #registerBtn{
-    color: yellowgreen;
-  }
-  .container {
-    order: 5;
-    text-align: center;
-  }
-  
-  .google {
-    display: flex;
-    justify-content: center;
-    margin-right: 20px;
-  }
-  .form {
-    padding: 1em;
-    width: 17em;
-    height: 3em;
-    margin-top: 1em;
-    outline: none;
-  }
-  
-  .form:hover {
-    border: 2px solid yellowgreen;
-  }
-  
-  /* CSS MURO */
-  
-  .icons {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .container-nav {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .header1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .header2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  
-  .header2 .icons{
-    width: 50px ;
-    height: 50px ;
-    margin-top: -30px;
-  }
-  
-  .iconpost {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .default {
-    color: #fff;
-    text-align: center;
-    margin-bottom: 10em;
-  }
-  .container-home {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 30px;
-  }
-  .logosportfemnav {
-    width: 200px;
-    height: 200px;
-  }
-  .espaciado{
-      border-radius: 10px;
-      height: auto;
-      width: 60vh;
-  }
-  .post{
-    width: auto;
-    height: auto;
-  }
-  .contenedorPost{
-  background-color: white;
-  border: 1px solid yellowgreen;
-  height: auto;
-  width: 60vh;
-  border-radius: 1em;
-  margin-top: 4vh;
-  }
-  .name-avatar{
-    display: flex;
-    flex-direction: row;
-    margin-top: 2vh;
-    justify-content: center;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(38, 38, 51);
+}
+.logo {
+  width: 35vw;
+  height: 35vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.loginContainer {
+  order: 5;
+  text-align: center;
+}
+.password {
+  padding: 1em;
+  margin-top: 1em;
+  width: 17em;
+  height: 8vh;
+  outline: none;
+}
+.name {
+  padding: 1em;
+  width: 17em;
+  height: 8vh;
+  outline: none;
+}
+.name:hover {
+  border: 2px solid yellowgreen;
+}
+.password:hover {
+  border: 2px solid yellowgreen;
+}
 
-  .contenedorPost p{
-    color: black;
-  }
-  .publicar-btn{
-    margin-top: 4vh;
+.btn {
+  padding: 0.5em;
+}
+
+.btn-ing {
+  height: 8vh;
+  margin-top: 1em;
+  width: 17em;
+  background-color: yellowgreen;
+  outline: none;
+  color:white;
+}
+
+.formBtn {
+  height: 30px;
+  margin-top: 1em;
+  width: 17em;
+  background-color: yellowgreen;
+  outline: none;
+  color:white;
+}
+.btn-ing :hover {
+  background-color: rgb(165, 197, 101);
+  color:white;
+}
+
+.btn-ing,
+.formBtn:hover {
+  border: 2px solid yellowgreen;
+}
+
+p {
+  padding: 1vh;
+  color: white;
+}
+h1 {
+  padding: 1.5em;
+  color: white;
+}
+a {
+  color: white;
+  text-decoration: none;
+
+}
+#registerBtn{
+  color: yellowgreen;
+}
+.container {
+  order: 5;
+  text-align: center;
+}
+
+.google {
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
+}
+.form {
+  padding: 1em;
+  width: 17em;
+  height: 3em;
+  margin-top: 1em;
+  outline: none;
+}
+
+.form:hover {
+  border: 2px solid yellowgreen;
+}
+
+/* CSS MURO */
+
+.icons {
+  width: 100px;
+  height: 100px;
+}
+
+.container-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.header2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.header2 .icons{
+  width: 50px ;
+  height: 50px ;
+  margin-top: -30px;
+}
+
+.iconpost {
+  width: 200px;
+  height: 200px;
+}
+
+.default {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10em;
+}
+.container-home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+
+}
+.logosportfemnav {
+  width: 200px;
+  height: 200px;
+}
+.espaciado{
+    border-radius: 10px;
+    height: auto;
     width: 60vh;
-    height: 8vh;
-    border-radius: 2em;
-    background-color: #F88207;
-    color:white;
-  }
-  .publicar-btn:hover{
-    background-color: #F88207;
-  }
+}
+.post{
+  width: auto;
+  height: auto;
+}
+.contenedorPost{
+background-color: white;
+border: 1px solid yellowgreen;
+height: auto;
+width: 60vh;
+border-radius: 1em;
+margin-top: 4vh;
+margin-bottom: 1vh;
+}
+.name-avatar{
+  display: flex;
+  flex-direction: row;
+  margin-top: 2vh;
+  justify-content: center;
+}
+
+.contenedorPost p{
+  color: black;
+}
+.publicar-btn{
+  margin-top: 4vh;
+  width: 60vh;
+  height: 8vh;
+  border-radius: 2em;
+  background-color: #F88207;
+  color:white;
+}
+.publicar-btn:hover{
+  background-color: #F88207;
+}
+
+.like-icons{
+  display: flex;
+  flex-direction:row;
+}
+
+.iconpost{
+  width: 10vh;
+  height: 10vh;
   
-  .like-icons{
-    display: flex;
-    flex-direction:row;
+}
+
+.container-web {
+  display: none;
+
+}
+
+  .container-all{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
   }
-  
-  .iconpost{
-    width: 10vh;
-    height: 10vh;
+  .container{
+    align-items: center;
     
   }
+  
 
-  .container-web {
-    display: none;
 
-  }
-  
-    .container-all{
-     display: flex;
-     flex-direction: row;
-     justify-content: center;
-    }
-    .container{
-      align-items: center;
-      
-    }
-     
-  .user-name{
-    color: #F88207;
-  }
-  
-  .avatar{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-  }
-  
-  .user-picture{
-    display: flex;
-    flex-direction: row;
-  }
- .container-wall{
+.user-name{
+  color: #F88207;
+}
+
+.avatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.user-picture{
   display: flex;
-  flex-direction: row-reverse;
- }
+  flex-direction: row;
+}
+.container-wall{
+display: flex;
+flex-direction: row-reverse;
+}
+
+.publish{
+ padding: 0%;
+ margin-bottom: 2vh;
+}
