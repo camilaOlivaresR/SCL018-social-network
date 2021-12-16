@@ -8,8 +8,8 @@ body {
   background-color: rgb(38, 38, 51);
 }
 .logo {
-  width: 35vw;
-  height: 35vh;
+  width: 30vw;
+  height: 30vh;
   margin: auto;
   display: flex;
   justify-content: center;
