@@ -4,7 +4,7 @@ import {
   auth,
   eraseDoc,
   logOut,
-  editPost,
+  //editPost,
 } from '../lib/firebase.js';
 
 export const home = () => {
@@ -37,8 +37,6 @@ export const home = () => {
   const post = (publicaciones ) => {
     containerHome.querySelector("#publicaciones").innerHTML = "";
     publicaciones.forEach((element) => {
-     // console.log(element);
-    // console.log('User Id:' + auth.currentUser.uid);
       containerHome.querySelector("#publicaciones").innerHTML += `
       <section class="public" id="${element.id}">
       <div class= "contenedorPost">
@@ -57,7 +55,7 @@ export const home = () => {
       </div>
       </section>`
 
-      //input type capturar el value , o vaciarlo
+
 
       const referencia = containerHome.querySelector('.public')
       const botonDelete = containerHome.querySelectorAll('.delete-btn');
@@ -74,18 +72,6 @@ export const home = () => {
     });
   };
   readData(post);
-
-  // editar, actualizar post:
-  const editButton = containerHome.querySelectorAll('.iconpost');
-  editButton.forEach((btn) => {
-    const id = btn.getAttribute('id');
-    btn.addEventListener('click', () => {
-      btn.removeAttribute('readonly')
-      editPost(id)
-    })
-  });
-
-
 
   // cerrar sesion
   const out = containerHome.querySelector('#btn-out');

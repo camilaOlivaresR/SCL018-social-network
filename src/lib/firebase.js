@@ -63,7 +63,7 @@ export const signInGoogle = () => {
     });
 };
 // REGISTRO EMAIL Y PASSWORD NUEVOS USUARIOS
-export const newEmail = (email, newpassword) => {
+export const newEmail = (email, newpassword ) => {
   // retornar esta funcion, hacer cambio de hash
   createUserWithEmailAndPassword(auth, email, newpassword)
     .then((userCredential) => {
@@ -82,7 +82,6 @@ export const logEmail = (emaiLogin, passwordLogin) => {
   signInWithEmailAndPassword(auth, emaiLogin, passwordLogin)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log(user);
     window.location.hash = '#/templateHome';
     })
     .catch((error) => {
@@ -141,6 +140,7 @@ export const observed = () => {
      const uid = user.uid;
     
     } else if ( window.location.hash === '#/templateHome') {
+     
       logOut(); 
      
   } else if(!user){
@@ -166,14 +166,3 @@ setPersistence(auth, browserSessionPersistence)
     const errorMessage = error.message;
   });
 
-
-
-//editar
-
-export const editPost = async (id,  ) => {//nuevo mensaje generado
-  const postRef = doc(db, 'contenido', id);
-  await updateDoc(postRef, {
-  //indicar campo a actualizar
-  //key nuevo mensaje
-  });
-};
