@@ -42,11 +42,7 @@ export const login = () => {
   containerLogin.querySelector('#btn-login').addEventListener('click', () => {
     const emaiLogin = containerLogin.querySelector('#loginEmail').value;
     const passwordLogin = containerLogin.querySelector('#loginPassword').value;
-    if (passwordLogin === '') {
-      alert('Escribe tu contraseña porfavor');
-    } else {
-    logEmail(emaiLogin, passwordLogin);
-    }
+   
   });
 
   return containerLogin;
