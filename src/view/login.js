@@ -42,7 +42,7 @@ export const login = () => {
   containerLogin.querySelector('#btn-login').addEventListener('click', () => {
     const emaiLogin = containerLogin.querySelector('#loginEmail').value;
     const passwordLogin = containerLogin.querySelector('#loginPassword').value;
-   
+    logEmail();
   });
 
   return containerLogin;

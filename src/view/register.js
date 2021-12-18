@@ -25,10 +25,11 @@ export const register = () => {
   formRegister.querySelector('#newRegister').addEventListener('click', () => {
     const email = formRegister.querySelector('#email').value;
     const newpassword = formRegister.querySelector('#password').value;
-    if(newpassword.length < 6){
-       alert('Tu contraseña debe tener 6 caracteres')
-    }else{
+    
+    if(newpassword.length > 6){
       newEmail(email, newpassword);
+    }else {
+     alert('Tu contraseña debe tener 6 caracteres')
     }
   });
 
