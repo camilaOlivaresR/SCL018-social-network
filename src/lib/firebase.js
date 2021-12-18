@@ -22,7 +22,7 @@ import {
   doc,
   Timestamp,
   orderBy,
- // updateDoc,
+  updateDoc,
 
 } from 'https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore.js';
 
@@ -170,10 +170,9 @@ setPersistence(auth, browserSessionPersistence)
 
 //editar
 
-export const editPost = async (id,  ) => {//nuevo mensaje generado
+export const editPost = async (id,  titleUp  ) => {//nuevo mensaje generado
   const postRef = doc(db, 'contenido', id);
   await updateDoc(postRef, {
-  //indicar campo a actualizar
-  //key nuevo mensaje
+    title: titleUp,//indicar campo a actualizar ,key nuevo mensaje
   });
 };

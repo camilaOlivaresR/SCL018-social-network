@@ -138,9 +138,9 @@
     margin-top: -30px;
   }
   
-  .iconpost {
-    width: 200px;
-    height: 200px;
+  .iconEdit {
+    width: 8vh;
+    height: 8vh;
   }
   
   .default {
@@ -251,4 +251,8 @@
  .publish{
    padding: 0%;
    margin-bottom: 2vh;
+ }
+ .redit{
+   border: none;
+   width: 40vw;
  }

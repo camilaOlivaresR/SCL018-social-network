@@ -45,13 +45,13 @@ export const home = () => {
       <h1 class="user-name">${element.username}</h1> 
       </div>
       <div class='publish'>
-      <p name="publication" id="publish">${element.title} </p>
+      <textarea readonly="readonly" id="publish" class='redit' >${element.title}</textarea>
       </div>
       </div>
        <div class="container-wall">
       ${(element.userId === auth.currentUser.uid) ?
-          ` <img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}">
-          <img class="iconpost" src="img/13.png" alt="edit"  id="${element.id}">
+        `<img src="img/14.png" alt="delete" class="delete-btn iconpost" id="${element.id}">
+         <button value="${element.id}" class="iconEdit" >Editar</button>
               ` : ''
         }
       </div>
@@ -71,20 +71,24 @@ export const home = () => {
           }
         });
       });
-    });
-  };
-  readData(post);
-
-  // editar, actualizar post:
-  const editButton = containerHome.querySelectorAll('.iconpost');
-  editButton.forEach((btn) => {
-    const id = btn.getAttribute('id');
-    btn.addEventListener('click', () => {
-      btn.removeAttribute('readonly')
-      editPost(id)
+ 
+     // editar, actualizar post:
+  const editButton = containerHome.querySelectorAll('.iconEdit');
+  editButton.forEach((btnEdit) => {
+    btnEdit.addEventListener('click', () => {
+      console.log(btnEdit);
+      const uid = btnEdit.value;
+      const prePublish = document.querySelector('.publish');
+      const posTitle = prePublish.querySelector('.redit');
+      posTitle.removeAttribute('readonly')
+      const title = preTitle.value;
+     
+      editPost(uid, title, posTitle);
     })
   });
-
+});
+  };
+  readData(post);
 
 
   // cerrar sesion
